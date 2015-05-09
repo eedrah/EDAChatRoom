@@ -7,11 +7,13 @@
     @Scripts.Render("~/bundles/app")
 }
 
+<div id="messagesReceivedContainer">
+    <ul id="messagesReceived"></ul>
+</div>
 <div id="messageSendContainer">
-    <input id="message" type="text"/>
+    <input id="messageBox" type="text"/>
     <input id="sendMessageButton" class="btn" type="button" value="Send"/>
 </div>
-<div id="messagesReceivedContainer"></div>
 
 @*<div class="jumbotron">
     <h1>ASP.NET</h1>
