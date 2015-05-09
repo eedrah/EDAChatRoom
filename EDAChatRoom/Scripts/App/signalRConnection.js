@@ -3,12 +3,12 @@
 $(runChat);
 
 function runChat() {
-    username = prompt('Enter a groovy alias')
+    username = prompt('Enter a groovy alias');
 
     var chatroom = $.connection.chatroom;
 
-    chatroom.client.broadcastMessage = function (username, message) {
-        var $li = $('<li>').text(createLiText(username, message));
+    chatroom.client.broadcastMessage = function (username, message, currentTime) {
+        var $li = $('<li>').text(createLiText(username, message, currentTime));
         $('#messagesReceived').append($li);
     }
 
@@ -19,8 +19,8 @@ function runChat() {
     $.connection.hub.start();
 };
 
-function createLiText(username, message) {
-    return "From " + username + ": " + message;
+function createLiText(username, message, currentTime) {
+    return currentTime + " From " + username + ": " + message;
 }
 
 function sendMessage(chatroom) {
