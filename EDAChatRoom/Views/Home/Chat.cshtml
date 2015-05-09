@@ -7,12 +7,18 @@
     @Scripts.Render("~/bundles/app")
 }
 
-<div class="jumbotron">
+<div id="messageSendContainer">
+    <input id="message" type="text"/>
+    <input id="sendMessageButton" class="btn" type="button" value="Send"/>
+</div>
+<div id="messagesReceivedContainer"></div>
+
+@*<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">Welcome to EDA chat!</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
     </p>
-</div>
+</div>*@
 
 @*<div class="row">
     <div class="col-md-4">
