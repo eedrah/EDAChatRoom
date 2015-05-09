@@ -9,7 +9,7 @@ namespace EDAChatRoom.Hubs {
     [HubName("chatroom")]
     public class EDAChatHub : Hub {
         public void Send(string name, string message) {
-            Clients.All.broadcastMessage(name, message);
+            Clients.All.broadcastMessage(name, message, DateTime.Now.TimeOfDay);
         }
     }
 }
