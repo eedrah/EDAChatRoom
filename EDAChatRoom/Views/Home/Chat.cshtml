@@ -2,6 +2,11 @@
     ViewBag.Title = "Home Page";
 }
 
+@section scripts{
+    @Scripts.Render("~/bundles/signalR")
+    @Scripts.Render("~/bundles/app")
+}
+
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">Welcome to EDA chat!</p>

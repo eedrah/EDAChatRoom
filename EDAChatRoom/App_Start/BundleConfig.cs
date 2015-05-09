@@ -23,6 +23,14 @@ namespace EDAChatRoom {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/signalR").Include(
+                "~/Scripts/jquery.signalR-{version}.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Scripts/App/signalRConnection.js"
+                ));
         }
     }
 }
