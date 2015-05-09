@@ -8,10 +8,14 @@
     @Scripts.Render("~/bundles/app")
 
 }
+<audio id="messageAlertSound">
+    <source src="./Content/Assets/MessageSound.mp3" type="audio/mpeg"/>
+</audio>
 
 <div id="messagesReceivedContainer">
     <ul id="messagesReceived"></ul>
 </div>
+
 <div id="messageSendContainer">
     <input id="messageBox" type="text"/>
     <input id="sendMessageButton" class="btn" type="button" value="Send"/>
