@@ -10,10 +10,10 @@ function runChat() {
     chatroom.client.broadcastMessage = function (username, message, currentTime) {
         var $li = $('<li>').text(createLiText(username, message, currentTime));
         $('#messagesReceived').append($li);
-        $('#messageAlertSound').get(0).play();
         //need to add condition to check if user is currently on the window or not
-        notifyMe(username, message);
-  
+        if (document["hidden"]) {
+            createPopUpNotification(username, message);
+        }
     }
 
     $("#messageBox").keypress(function(e) {
@@ -41,10 +41,10 @@ function sendMessage(chatroom) {
     $messageBox.val('');
 }
 
-function notifyMe(username, message) {
-
+function createPopUpNotification(username, message) {
+    $('#messageAlertSound').get(0).play();
     var popup = new Notification('You have a message from ' + username, {
-       icon: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAJiAAAAJGQ5MGM3MzIwLTA5NzUtNDE4Yy04ZTkzLTY3YjgyY2Y1ODcxZA.jpg',
+        icon: 'https://pbs.twimg.com/profile_images/378800000701114379/c2d4e7d706aec1b1207c40874c0d420d_400x400.png',
        body: message
     });
     setTimeout(function() {
