@@ -14,18 +14,18 @@ namespace EDAChatRoom.Hubs {
         public void ClientSendMessage(string messageText) {
             Message message = new Message(Clients.CallerState.username, messageText);
             HubMessage hubMessage = new HubMessage(message);
-            SendToAll(hubMessage);
+            Clients.All.ServerSend(hubMessage);
         }
 
         public override Task OnConnected()
         {
             Connection connection = new Connection(Context.ConnectionId);
             HubMessage newConnectionHubMessage = new HubMessage(connection);
-            SendToAll(newConnectionHubMessage);
+            Clients.All.ServerSend(newConnectionHubMessage);
 
             InitialConnection initialConnection = new InitialConnection(Clients.Others);
             HubMessage whoIsInRoomHubMessage = new HubMessage(initialConnection);
-            SendToCaller(whoIsInRoomHubMessage);
+            Clients.Caller.ServerSend(whoIsInRoomHubMessage);
 
             return base.OnConnected();
         }
@@ -33,16 +33,8 @@ namespace EDAChatRoom.Hubs {
         public override Task OnDisconnected(bool stopCalled) {
             Disconnection disconnection = new Disconnection(Context.ConnectionId);
             HubMessage hubMessage = new HubMessage(disconnection);
-            SendToAll(hubMessage);
-            return base.OnDisconnected(stopCalled);
-        }
-
-        private void SendToAll(HubMessage hubMessage) {
             Clients.All.ServerSend(hubMessage);
-        }
-
-        private void SendToCaller(HubMessage hubMessage) {
-            Clients.Caller.ServerSend(hubMessage);
+            return base.OnDisconnected(stopCalled);
         }
     }
 }
