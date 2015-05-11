@@ -12,5 +12,4 @@ SRModel.prototype.SendMessageToServer = function(chatroom) {
     if ($messageBox.val() != '') {
         chatroom.server.clientSend(username, $messageBox.val());
     };
-    $messageBox.val('');
 }
