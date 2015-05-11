@@ -19,8 +19,8 @@ namespace EDAChatRoom.Hubs {
 
         public void ClientSetUsername() {
             _connectedUsers.Add(Context.ConnectionId, Clients.CallerState.username);
-            BroadcastNewUserEntered();
             BroadcastAllUsersToUser();
+            BroadcastNewUserEntered();
         }
 
         public override Task OnDisconnected(bool stopCalled) {
