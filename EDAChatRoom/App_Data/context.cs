@@ -22,10 +22,4 @@ namespace EDAChatRoom.Models
 
         public virtual DbSet<DbRecentMessage> RecentMessages { get; set; } 
     }
-
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
 }

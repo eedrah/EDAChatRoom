@@ -161,7 +161,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Connection.cs" />
-    <Compile Include="Models\context.cs" />
+    <Compile Include="App_Data\context.cs" />
     <Compile Include="Models\DbRecentMessage.cs" />
     <Compile Include="Models\Disconnection.cs" />
     <Compile Include="Hubs\EDAChatHub.cs" />
@@ -216,7 +216,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\RecentMessages\" />
   </ItemGroup>
   <ItemGroup>
