@@ -19,8 +19,7 @@ namespace EDAChatRoom.Hubs {
         }
 
         public void ClientSetUsername() {
-            string username = Clients.CallerState.username;
-            Debug.WriteLine(username);
+            _connectedUsers.Add(Context.ConnectionId, Clients.CallerState.username);
             BroadcastNewUserEntered();
             BroadcastAllUsersToUser();
         }
@@ -29,6 +28,8 @@ namespace EDAChatRoom.Hubs {
             Disconnection disconnection = new Disconnection(Context.ConnectionId);
             HubMessage hubMessage = new HubMessage(disconnection);
             Clients.All.ServerSend(hubMessage);
+
+            _connectedUsers.Remove(Context.ConnectionId);
             return base.OnDisconnected(stopCalled);
         }
 
