@@ -15,24 +15,26 @@ function runChat() {
             console.log(hubMessage);
         }
     }
-        //var $li = $('<li>').text(createLiText(username, message, currentTime));
-        //$('#messagesReceived').append($li);
-        ////need to add condition to check if user is currently on the window or not
-        //if (document["hidden"]) {
-        //    createPopUpNotification(username, message);
-        //}
+    //var $li = $('<li>').text(createLiText(username, message, currentTime));
+    //$('#messagesReceived').append($li);
+    ////need to add condition to check if user is currently on the window or not
+    //if (document["hidden"]) {
+    //    createPopUpNotification(username, message);
+    //}
 
-    $("#messageBox").keypress(function(e) {
+    $("#messageBox").keypress(function (e) {
         if (e.which === 13) {
             $('#sendMessageButton').trigger('click');
         }
     });
 
-    $('#sendMessageButton').click(function() {
+    $('#sendMessageButton').click(function () {
         sendMessage(chatroom);
     });
 
-    $.connection.hub.start();
+    $.connection.hub.start().done(function () {
+        chatroom.server.clientSetUsername();
+    });
 };
 
 function createLiText(username, message, currentTime) {
@@ -51,9 +53,9 @@ function createPopUpNotification(username, message) {
     $('#messageAlertSound').get(0).play();
     var popup = new Notification('You have a message from ' + username, {
         icon: 'https://pbs.twimg.com/profile_images/378800000701114379/c2d4e7d706aec1b1207c40874c0d420d_400x400.png',
-       body: message
+        body: message
     });
-    setTimeout(function() {
+    setTimeout(function () {
         popup.close();
     }, 5000);
 }

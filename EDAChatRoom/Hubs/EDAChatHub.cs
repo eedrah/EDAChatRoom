@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -17,10 +18,11 @@ namespace EDAChatRoom.Hubs {
             Clients.All.ServerSend(hubMessage);
         }
 
-        public override Task OnConnected() {
+        public void ClientSetUsername() {
+            string username = Clients.CallerState.username;
+            Debug.WriteLine(username);
             BroadcastNewUserEntered();
             BroadcastAllUsersToUser();
-            return base.OnConnected();
         }
 
         public override Task OnDisconnected(bool stopCalled) {
