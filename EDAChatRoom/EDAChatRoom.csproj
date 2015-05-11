@@ -138,6 +138,7 @@
     <Compile Include="Hubs\Connection.cs" />
     <Compile Include="Hubs\Disconnection.cs" />
     <Compile Include="Hubs\EDAChatHub.cs" />
+    <Compile Include="Hubs\IClient.cs" />
     <Compile Include="Hubs\InitialConnection.cs" />
     <Compile Include="Models\HubMessage.cs" />
     <Compile Include="Models\ISendable.cs" />
