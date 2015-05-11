@@ -8,8 +8,12 @@ function runChat() {
     Notification.requestPermission();
     var chatroom = $.connection.chatroom;
 
-    chatroom.client.serverSend = function (username, message, currentTime) {
-        controller.RenderMessage(username, message, currentTime);
+    chatroom.client.serverSend = function (hubMessage) {
+        if (hubMessage.HubMessageType == "Message") {
+            controller.RenderMessage(hubMessage.Payload.Username, hubMessage.Payload.MessageText, hubMessage.MessageTime);
+        } else {
+            console.log(hubMessage);
+        }
     }
         //var $li = $('<li>').text(createLiText(username, message, currentTime));
         //$('#messagesReceived').append($li);
