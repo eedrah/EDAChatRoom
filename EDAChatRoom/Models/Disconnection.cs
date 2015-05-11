@@ -3,10 +3,10 @@ using EDAChatRoom.Models;
 
 namespace EDAChatRoom.Hubs {
     public class Disconnection : ISendable {
-        public string UserConnectionId { get; set; }
+        public string Username { get; set; }
 
-        public Disconnection(string connectionId) {
-            UserConnectionId = connectionId;
+        public Disconnection(string username) {
+            Username = username;
         }
     }
 }

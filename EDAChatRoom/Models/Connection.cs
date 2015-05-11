@@ -2,10 +2,10 @@
 
 namespace EDAChatRoom.Hubs {
     public class Connection : ISendable {
-        public string UserConnectionId { get; set; }
+        public string Username { get; set; }
 
-        public Connection(string connectionId) {
-            UserConnectionId = connectionId;
+        public Connection(string username) {
+            Username = username;
         }
     }
 }
