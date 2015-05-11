@@ -25,23 +25,12 @@ function runChat() {
     });
 
     $('#sendMessageButton').click(function() {
-        sendMessage(chatroom);
+        controller.SendMessage(chatroom);
     });
 
     $.connection.hub.start();
 };
 
-function createLiText(username, message, currentTime) {
-    return currentTime + " From " + username + ": " + message;
-}
-
-function sendMessage(chatroom) {
-    var $messageBox = $('#messageBox');
-    if ($messageBox.val() != '') {
-        chatroom.server.clientSend(username, $messageBox.val());
-    };
-    $messageBox.val('');
-}
 
 function createPopUpNotification(username, message) {
     $('#messageAlertSound').get(0).play();
