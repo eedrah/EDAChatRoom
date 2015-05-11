@@ -4,12 +4,16 @@ $(runChat);
 
 function runChat() {
     var controller = new SRController();
-    username = prompt('Enter a groovy alias');
-    Notification.requestPermission();
     var chatroom = $.connection.chatroom;
+    chatroom.state.username = prompt('Enter a groovy alias');
+    Notification.requestPermission();
 
-    chatroom.client.serverSend = function (username, message, currentTime) {
-        controller.RenderMessage(username, message, currentTime);
+    chatroom.client.serverSend = function (hubMessage) {
+        if (hubMessage.HubMessageType === "Message") {
+            controller.RenderMessage(hubMessage.Payload.Username, hubMessage.Payload.MessageText, hubMessage.MessageTime);
+        } else {
+            console.log(hubMessage);
+        }
     }
 
         ////need to add condition to check if user is currently on the window or not
@@ -25,7 +29,9 @@ function runChat() {
         controller.SendMessage(chatroom);
     });
 
-    $.connection.hub.start();
+    $.connection.hub.start().done(function () {
+        chatroom.server.clientSetUsername();
+    });
 };
 
 
