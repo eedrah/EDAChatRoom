@@ -2,12 +2,31 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@section scripts{
+    @Scripts.Render("~/bundles/signalR")
+    @Scripts.Render("~/signalr/hubs")
+    @Scripts.Render("~/bundles/app")
+
+}
+<audio id="messageAlertSound">
+    <source src="./Content/Assets/MessageSound.mp3" type="audio/mpeg"/>
+</audio>
+
+<div id="messagesReceivedContainer">
+    <ul id="messagesReceived"></ul>
+</div>
+
+<div id="messageSendContainer">
+    <input id="messageBox" type="text"/>
+    <input id="sendMessageButton" class="btn" type="button" value="Send"/>
+</div>
+
+@*<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">Welcome to EDA chat!</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
     </p>
-</div>
+</div>*@
 
 @*<div class="row">
     <div class="col-md-4">
