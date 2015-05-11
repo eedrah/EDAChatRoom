@@ -9,7 +9,7 @@ function runChat() {
     Notification.requestPermission();
 
     chatroom.client.serverSend = function (hubMessage) {
-        if (hubMessage.HubMessageType == "Message") {
+        if (hubMessage.HubMessageType === "Message") {
             controller.RenderMessage(hubMessage.Payload.Username, hubMessage.Payload.MessageText, hubMessage.MessageTime);
         } else {
             console.log(hubMessage);
