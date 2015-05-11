@@ -15,6 +15,13 @@ namespace EDAChatRoom.Hubs {
             SendToAll(hubMessage);
         }
 
+        public override Task OnConnected() {
+            Connection connection = new Connection(Context.ConnectionId);
+            HubMessage hubMessage = new HubMessage(connection);
+            SendToAll(hubMessage);
+            return base.OnConnected();
+        }
+
         public override Task OnDisconnected(bool stopCalled) {
             Disconnection disconnection = new Disconnection(Context.ConnectionId);
             HubMessage hubMessage = new HubMessage(disconnection);
