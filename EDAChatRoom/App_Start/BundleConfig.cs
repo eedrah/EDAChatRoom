@@ -29,7 +29,10 @@ namespace EDAChatRoom {
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                "~/Scripts/App/signalRConnection.js"
+                "~/Scripts/App/signalRConnection.js",
+                "~/Scripts/App/SignalRController.js",
+                "~/Scripts/App/SignalRModel.js",
+                "~/Scripts/App/SignalRView.js"
                 ));
         }
     }

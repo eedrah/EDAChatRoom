@@ -3,18 +3,20 @@
 $(runChat);
 
 function runChat() {
+    var controller = new SRController();
     username = prompt('Enter a groovy alias');
     Notification.requestPermission();
     var chatroom = $.connection.chatroom;
 
     chatroom.client.broadcastMessage = function (username, message, currentTime) {
-        var $li = $('<li>').text(createLiText(username, message, currentTime));
-        $('#messagesReceived').append($li);
-        //need to add condition to check if user is currently on the window or not
-        if (document["hidden"]) {
-            createPopUpNotification(username, message);
-        }
+        controller.RenderMessage(username, message, currentTime);
     }
+        //var $li = $('<li>').text(createLiText(username, message, currentTime));
+        //$('#messagesReceived').append($li);
+        ////need to add condition to check if user is currently on the window or not
+        //if (document["hidden"]) {
+        //    createPopUpNotification(username, message);
+        //}
 
     $("#messageBox").keypress(function(e) {
         if (e.which === 13) {
@@ -50,5 +52,4 @@ function createPopUpNotification(username, message) {
     setTimeout(function() {
         popup.close();
     }, 5000);
-
 }
