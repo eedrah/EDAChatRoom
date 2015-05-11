@@ -4,9 +4,9 @@ $(runChat);
 
 function runChat() {
     var controller = new SRController();
-    username = prompt('Enter a groovy alias');
-    Notification.requestPermission();
     var chatroom = $.connection.chatroom;
+    chatroom.state.username = prompt('Enter a groovy alias');
+    Notification.requestPermission();
 
     chatroom.client.serverSend = function (hubMessage) {
         if (hubMessage.HubMessageType == "Message") {

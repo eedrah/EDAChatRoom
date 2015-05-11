@@ -10,7 +10,7 @@ namespace EDAChatRoom.Hubs {
     [HubName("chatroom")]
     public class EDAChatHub : Hub {
         public void ClientSend(string username, string messageText) {
-            Message message = new Message(username, messageText);
+            Message message = new Message(Clients.Caller.username, messageText);
             HubMessage hubMessage = new HubMessage(message);
             SendToAll(hubMessage);
         }
