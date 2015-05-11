@@ -11,8 +11,7 @@ function runChat() {
     chatroom.client.serverSend = function (username, message, currentTime) {
         controller.RenderMessage(username, message, currentTime);
     }
-        //var $li = $('<li>').text(createLiText(username, message, currentTime));
-        //$('#messagesReceived').append($li);
+
         ////need to add condition to check if user is currently on the window or not
         //if (document["hidden"]) {
         //    createPopUpNotification(username, message);
