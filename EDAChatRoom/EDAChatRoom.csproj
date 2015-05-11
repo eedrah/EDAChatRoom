@@ -135,11 +135,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\Connection.cs" />
-    <Compile Include="Hubs\Disconnection.cs" />
+    <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\Disconnection.cs" />
     <Compile Include="Hubs\EDAChatHub.cs" />
-    <Compile Include="Hubs\IClient.cs" />
-    <Compile Include="Hubs\InitialConnection.cs" />
+    <Compile Include="Models\IClient.cs" />
+    <Compile Include="Models\InitialConnection.cs" />
     <Compile Include="Models\HubMessage.cs" />
     <Compile Include="Models\ISendable.cs" />
     <Compile Include="Models\Message.cs" />
