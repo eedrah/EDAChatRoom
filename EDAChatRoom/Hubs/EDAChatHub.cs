@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using EDAChatRoom.Models;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 
 namespace EDAChatRoom.Hubs {
     [HubName("chatroom")]
     public class EDAChatHub : Hub {
-        public void ClientSend(string name, string message)
+        public void ClientSend(string username, string messageText)
         {
-            string formattedCurrentTime = GetCurrentTime();
-            Clients.All.broadcastMessage(name, message, formattedCurrentTime);
+            Message message = new Message(username, messageText);
+            SendToAll(message);
         }
 
-        private string GetCurrentTime()
-        {
-            return DateTime.Now.ToString("t");
+        private void SendToAll(ISendable sendable) {
+            Clients.All.ServerSend(sendable);
         }
     }
 }

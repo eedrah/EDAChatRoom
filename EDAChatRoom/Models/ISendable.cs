@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDAChatRoom.Models {
     public interface ISendable {
-        InfoType InfoType { get; set; }
-    }
-
-    public enum InfoType
-    {
-        Message,
-        Disconnection,
-        Connection,
-        InitialConnection
+        InfoType InfoTypeEnum { get; }
+        string InfoType { get; }
     }
 }

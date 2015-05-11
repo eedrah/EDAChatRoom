@@ -7,7 +7,7 @@ function runChat() {
 
     var chatroom = $.connection.chatroom;
 
-    chatroom.client.broadcastMessage = function (username, message, currentTime) {
+    chatroom.client.serverSend = function (username, message, currentTime) {
         var $li = $('<li>').text(createLiText(username, message, currentTime));
         $('#messagesReceived').append($li);
         $('#messageAlertSound').get(0).play();
