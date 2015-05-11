@@ -25,7 +25,7 @@ namespace EDAChatRoom.Hubs {
         }
 
         public override Task OnDisconnected(bool stopCalled) {
-            Disconnection disconnection = new Disconnection(Context.ConnectionId);
+            Disconnection disconnection = new Disconnection(_connectedUsers[Context.ConnectionId]);
             HubMessage hubMessage = new HubMessage(disconnection);
             Clients.All.ServerSend(hubMessage);
 
@@ -40,7 +40,7 @@ namespace EDAChatRoom.Hubs {
         }
 
         private void BroadcastNewUserEntered() {
-            Connection connection = new Connection(Context.ConnectionId);
+            Connection connection = new Connection(Clients.CallerState.username);
             HubMessage newConnectionHubMessage = new HubMessage(connection);
             Clients.All.ServerSend(newConnectionHubMessage);
         }
