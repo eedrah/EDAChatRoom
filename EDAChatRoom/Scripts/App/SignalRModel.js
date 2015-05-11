@@ -10,7 +10,7 @@ SRModel.prototype.BindMessageToLiElement = function(username, messageContent, cu
 SRModel.prototype.SendMessageToServer = function(chatroom) {
     var $messageBox = $('#messageBox');
     if ($messageBox.val() != '') {
-        chatroom.server.clientSend(username, $messageBox.val());
+        chatroom.server.clientSendMessage($messageBox.val());
     };
     $messageBox.val('');
 }
