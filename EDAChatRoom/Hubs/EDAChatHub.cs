@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using EDAChatRoom.Models;
 using Microsoft.AspNet.SignalR;
@@ -9,11 +9,17 @@ using Microsoft.AspNet.SignalR.Hubs;
 namespace EDAChatRoom.Hubs {
     [HubName("chatroom")]
     public class EDAChatHub : Hub {
-        public void ClientSend(string username, string messageText)
-        {
+        public void ClientSend(string username, string messageText) {
             Message message = new Message(username, messageText);
             HubMessage hubMessage = new HubMessage(message);
             SendToAll(hubMessage);
+        }
+
+        public override Task OnDisconnected(bool stopCalled) {
+            Disconnection disconnection = new Disconnection(Context.ConnectionId);
+            HubMessage hubMessage = new HubMessage(disconnection);
+            SendToAll(hubMessage);
+            return base.OnDisconnected(stopCalled);
         }
 
         private void SendToAll(HubMessage hubMessage) {
