@@ -34,7 +34,7 @@ namespace EDAChatRoom.Hubs {
         }
 
         private void BroadcastAllUsersToUser() {
-            InitialConnection initialConnection = new InitialConnection(Clients.Others);
+            InitialConnection initialConnection = new InitialConnection(_connectedUsers.Values);
             HubMessage whoIsInRoomHubMessage = new HubMessage(initialConnection);
             Clients.Caller.ServerSend(whoIsInRoomHubMessage);
         }
