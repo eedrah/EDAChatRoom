@@ -42,7 +42,7 @@ function createLiText(username, message, currentTime) {
 function sendMessage(chatroom) {
     var $messageBox = $('#messageBox');
     if ($messageBox.val() != '') {
-        chatroom.server.clientSend(username, $messageBox.val());
+        chatroom.server.clientSendMessage($messageBox.val());
     };
     $messageBox.val('');
 }

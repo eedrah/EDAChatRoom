@@ -9,7 +9,9 @@ using Microsoft.AspNet.SignalR.Hubs;
 namespace EDAChatRoom.Hubs {
     [HubName("chatroom")]
     public class EDAChatHub : Hub<IClient> {
-        public void ClientSend(string username, string messageText) {
+        private static Dictionary<string, string> _connectedUsers = new Dictionary<string, string>();
+
+        public void ClientSendMessage(string messageText) {
             Message message = new Message(Clients.CallerState.username, messageText);
             HubMessage hubMessage = new HubMessage(message);
             SendToAll(hubMessage);
