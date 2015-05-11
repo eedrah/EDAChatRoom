@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace EDAChatRoom.Models {
     public interface ISendable {
-        InfoType InfoTypeEnum { get; }
-        string InfoType { get; }
+        // Empty interface that makes non-sendable items fail to send.
     }
 }
