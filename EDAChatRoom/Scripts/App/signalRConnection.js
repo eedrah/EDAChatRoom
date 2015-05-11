@@ -7,7 +7,7 @@ function runChat() {
     Notification.requestPermission();
     var chatroom = $.connection.chatroom;
 
-    chatroom.client.broadcastMessage = function (username, message, currentTime) {
+    chatroom.client.serverSend = function (username, message, currentTime) {
         var $li = $('<li>').text(createLiText(username, message, currentTime));
         $('#messagesReceived').append($li);
         //need to add condition to check if user is currently on the window or not
@@ -36,7 +36,7 @@ function createLiText(username, message, currentTime) {
 function sendMessage(chatroom) {
     var $messageBox = $('#messageBox');
     if ($messageBox.val() != '') {
-        chatroom.server.send(username, $messageBox.val());
+        chatroom.server.clientSend(username, $messageBox.val());
     };
     $messageBox.val('');
 }
