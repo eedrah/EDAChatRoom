@@ -8,7 +8,7 @@ function runChat() {
     Notification.requestPermission();
     var chatroom = $.connection.chatroom;
 
-    chatroom.client.broadcastMessage = function (username, message, currentTime) {
+    chatroom.client.serverSend = function (username, message, currentTime) {
         controller.RenderMessage(username, message, currentTime);
     }
         //var $li = $('<li>').text(createLiText(username, message, currentTime));
@@ -38,7 +38,7 @@ function createLiText(username, message, currentTime) {
 function sendMessage(chatroom) {
     var $messageBox = $('#messageBox');
     if ($messageBox.val() != '') {
-        chatroom.server.send(username, $messageBox.val());
+        chatroom.server.clientSend(username, $messageBox.val());
     };
     $messageBox.val('');
 }

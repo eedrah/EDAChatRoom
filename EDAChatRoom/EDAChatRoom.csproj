@@ -136,6 +136,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\EDAChatHub.cs" />
+    <Compile Include="Models\AbstractSendable.cs" />
+    <Compile Include="Models\InfoType.cs" />
+    <Compile Include="Models\ISendable.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -183,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
