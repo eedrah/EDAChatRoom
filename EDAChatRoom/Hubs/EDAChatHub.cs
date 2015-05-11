@@ -17,16 +17,9 @@ namespace EDAChatRoom.Hubs {
             Clients.All.ServerSend(hubMessage);
         }
 
-        public override Task OnConnected()
-        {
-            Connection connection = new Connection(Context.ConnectionId);
-            HubMessage newConnectionHubMessage = new HubMessage(connection);
-            Clients.All.ServerSend(newConnectionHubMessage);
-
-            InitialConnection initialConnection = new InitialConnection(Clients.Others);
-            HubMessage whoIsInRoomHubMessage = new HubMessage(initialConnection);
-            Clients.Caller.ServerSend(whoIsInRoomHubMessage);
-
+        public override Task OnConnected() {
+            BroadcastNewUserEntered();
+            BroadcastAllUsersToUser();
             return base.OnConnected();
         }
 
@@ -35,6 +28,18 @@ namespace EDAChatRoom.Hubs {
             HubMessage hubMessage = new HubMessage(disconnection);
             Clients.All.ServerSend(hubMessage);
             return base.OnDisconnected(stopCalled);
+        }
+
+        private void BroadcastAllUsersToUser() {
+            InitialConnection initialConnection = new InitialConnection(Clients.Others);
+            HubMessage whoIsInRoomHubMessage = new HubMessage(initialConnection);
+            Clients.Caller.ServerSend(whoIsInRoomHubMessage);
+        }
+
+        private void BroadcastNewUserEntered() {
+            Connection connection = new Connection(Context.ConnectionId);
+            HubMessage newConnectionHubMessage = new HubMessage(connection);
+            Clients.All.ServerSend(newConnectionHubMessage);
         }
     }
 }
