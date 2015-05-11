@@ -12,11 +12,12 @@ namespace EDAChatRoom.Hubs {
         public void ClientSend(string username, string messageText)
         {
             Message message = new Message(username, messageText);
-            SendToAll(message);
+            HubMessage hubMessage = new HubMessage(message);
+            SendToAll(hubMessage);
         }
 
-        private void SendToAll(ISendable sendable) {
-            Clients.All.ServerSend(sendable);
+        private void SendToAll(HubMessage hubMessage) {
+            Clients.All.ServerSend(hubMessage);
         }
     }
 }
