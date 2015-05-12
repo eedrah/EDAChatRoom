@@ -21,7 +21,7 @@ namespace EDAChatRoom.Controllers
             dbcontext.SaveChanges();
             while(recentMessagesTable.Count() >= 30)
             {
-                DbRecentMessage messageToBeDeleted = recentMessagesTable.OrderByDescending(r => r.Id).First();
+                DbRecentMessage messageToBeDeleted = recentMessagesTable.OrderBy(r => r.MessageTime).First();
                 dbcontext.RecentMessages.Remove(messageToBeDeleted);
                 dbcontext.SaveChanges();
             }
