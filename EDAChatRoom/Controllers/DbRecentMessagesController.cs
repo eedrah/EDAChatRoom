@@ -13,7 +13,7 @@ namespace EDAChatRoom.Controllers
     {
         public context dbcontext = new context();
 
-        public void Post(Message message)
+        public void Post(HubMessage message)
         {
             DbRecentMessage recentMessage = new DbRecentMessage(message);
             dbcontext.RecentMessages.Add(recentMessage);
