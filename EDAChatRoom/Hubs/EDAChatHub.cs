@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using EDAChatRoom.Controllers;
 using EDAChatRoom.Models;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
@@ -9,11 +10,14 @@ using Microsoft.AspNet.SignalR.Hubs;
 namespace EDAChatRoom.Hubs {
     [HubName("chatroom")]
     public class EDAChatHub : Hub<IClient> {
+
         private static Dictionary<string, string> _connectedUsers = new Dictionary<string, string>();
+        private DbRecentMessagesController recentMessagesController = new DbRecentMessagesController();
 
         public void ClientSendMessage(string messageText) {
             Message message = new Message(Clients.CallerState.username, messageText);
             HubMessage hubMessage = new HubMessage(message);
+            recentMessagesController.Post(hubMessage);
             Clients.All.ServerSend(hubMessage);
         }
 

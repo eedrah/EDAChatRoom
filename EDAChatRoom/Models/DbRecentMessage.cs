@@ -14,6 +14,11 @@ namespace EDAChatRoom.Models
         public string MessageText { get; set; }
         public DateTime MessageTime { get; set; }
 
+        public DbRecentMessage()
+        {
+            
+        }
+
         public DbRecentMessage(HubMessage hubMessage)
         {
             Message message = (Message)hubMessage.Payload;
