@@ -37,8 +37,9 @@ namespace EDAChatRoom.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    var ctx = ((IObjectContextAdapter)recentMessagesTable).ObjectContext;
-                    ctx.Refresh(RefreshMode.ClientWins, recentMessagesTable);
+                    //if optimisticconcurrencyexception
+                    //var ctx = ((IObjectContextAdapter)recentMessagesTable).ObjectContext;
+                    //ctx.Refresh(RefreshMode.ClientWins, recentMessagesTable);
                 }
             }
         }
