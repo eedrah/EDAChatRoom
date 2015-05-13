@@ -1,7 +1,7 @@
 ﻿$(function() {
     $.getJSON("DbRecentMessages/Get", function(data) {
             console.log(data);
-        }).fail(function() {
-            alert("didnt work");
-        });
+        }).fail(function(data) {
+        console.log(data.responseText);
+    });
 });

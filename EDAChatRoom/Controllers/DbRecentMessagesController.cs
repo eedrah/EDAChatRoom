@@ -7,6 +7,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Mvc;
 using EDAChatRoom.Models;
@@ -45,9 +46,9 @@ namespace EDAChatRoom.Controllers
             }
         }
 
-        public IQueryable<DbRecentMessage> Get()
+        public JsonResult Get()
         {
-            return dbcontext.RecentMessages;
+            return Json(dbcontext.RecentMessages, JsonRequestBehavior.DenyGet);
         } 
     }
 }
