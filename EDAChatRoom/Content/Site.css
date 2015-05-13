@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#messagesReceivedContainer {
+    width: 50%;
+    height: 500px;
+    border: 1px solid black;
+    overflow: auto;
+}
