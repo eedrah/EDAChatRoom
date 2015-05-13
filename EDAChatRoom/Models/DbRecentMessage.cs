@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 
@@ -13,6 +15,8 @@ namespace EDAChatRoom.Models
         public string Username { get; set; }
         public string MessageText { get; set; }
         public DateTime MessageTime { get; set; }
+
+        private context dbContext = new context();
 
         public DbRecentMessage()
         {

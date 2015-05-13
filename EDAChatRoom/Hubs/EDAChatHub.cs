@@ -12,13 +12,13 @@ namespace EDAChatRoom.Hubs {
     public class EDAChatHub : Hub<IClient> {
 
         private static Dictionary<string, string> _connectedUsers = new Dictionary<string, string>();
-        private DbRecentMessagesController recentMessagesController = new DbRecentMessagesController();
+        private RecentMessagesDBMethods recentMessagesDb = new RecentMessagesDBMethods();
 
         public void ClientSendMessage(string messageText) {
             Message message = new Message(Clients.CallerState.username, messageText);
             HubMessage hubMessage = new HubMessage(message);
-            recentMessagesController.Post(hubMessage);
-            recentMessagesController.DeleteExcessMessagesFromDataBase();
+            recentMessagesDb.Post(hubMessage);
+            recentMessagesDb.DeleteExcessMessagesFromDataBase();
             Clients.All.ServerSend(hubMessage);
         }
 

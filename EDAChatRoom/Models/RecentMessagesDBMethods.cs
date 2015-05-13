@@ -1,41 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Core;
-using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Helpers;
-using System.Web.Http;
-using System.Web.Mvc;
-using EDAChatRoom.Models;
+using System.Web;
 
-namespace EDAChatRoom.Controllers
+namespace EDAChatRoom.Models
 {
-    public class DbRecentMessagesController : Controller
+    public class RecentMessagesDBMethods
     {
-        public context dbcontext = new context();
+        private context _context;
+
+        public context DbContext
+        {
+            get { return _context; }
+            set { _context = value; }
+        }
 
         public void Post(HubMessage message)
         {
-            DbSet<DbRecentMessage> recentMessagesTable = dbcontext.RecentMessages;
+            DbSet<DbRecentMessage> recentMessagesTable = DbContext.RecentMessages;
             DbRecentMessage recentMessage = new DbRecentMessage(message);
             recentMessagesTable.Add(recentMessage);
-            dbcontext.SaveChanges();
+            DbContext.SaveChanges();
         }
 
         public void DeleteExcessMessagesFromDataBase()
         {
-            DbSet<DbRecentMessage> recentMessagesTable = dbcontext.RecentMessages;
+            DbSet<DbRecentMessage> recentMessagesTable = DbContext.RecentMessages;
             while (recentMessagesTable.Count() > 30)
             {
                 try
                 {
                     DbRecentMessage oldestMessage = recentMessagesTable.OrderBy(r => r.MessageTime).First();
-                    dbcontext.RecentMessages.Remove(oldestMessage);
-                    dbcontext.SaveChanges();
+                    DbContext.RecentMessages.Remove(oldestMessage);
+                    DbContext.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -45,10 +44,5 @@ namespace EDAChatRoom.Controllers
                 }
             }
         }
-
-        public JsonResult Get()
-        {
-            return Json(dbcontext.RecentMessages, JsonRequestBehavior.AllowGet);
-        } 
     }
 }
