@@ -31,13 +31,13 @@ namespace EDAChatRoom.Controllers
             {
                 try
                 {
-                    DbRecentMessage messageToBeDeleted = recentMessagesTable.OrderBy(r => r.MessageTime).First();
-                    dbcontext.RecentMessages.Remove(messageToBeDeleted);
+                    DbRecentMessage oldestMessage = recentMessagesTable.OrderBy(r => r.MessageTime).First();
+                    dbcontext.RecentMessages.Remove(oldestMessage);
                     dbcontext.SaveChanges();
                 }
-                catch(OptimisticConcurrencyException)
+                catch (DbUpdateConcurrencyException)
                 {
-                    var ctx = ((IObjectContextAdapter) recentMessagesTable).ObjectContext;
+                    var ctx = ((IObjectContextAdapter)recentMessagesTable).ObjectContext;
                     ctx.Refresh(RefreshMode.ClientWins, recentMessagesTable);
                 }
             }
