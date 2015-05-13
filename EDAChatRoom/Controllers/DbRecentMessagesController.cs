@@ -8,11 +8,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using EDAChatRoom.Models;
 
 namespace EDAChatRoom.Controllers
 {
-    public class DbRecentMessagesController : ApiController
+    public class DbRecentMessagesController : Controller
     {
         public context dbcontext = new context();
 
