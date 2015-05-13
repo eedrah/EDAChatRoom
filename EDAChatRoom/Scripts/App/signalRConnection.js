@@ -38,5 +38,6 @@ function runChat() {
 
 
 function ScrollToBottomOfReceivedMessages() {
+    //need to add condition maybe only if out of page?
     $("#messagesReceivedContainer").prop({ scrollTop: $("#messagesReceivedContainer").prop("scrollHeight") });
 }
