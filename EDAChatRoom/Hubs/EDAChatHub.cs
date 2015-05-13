@@ -18,6 +18,7 @@ namespace EDAChatRoom.Hubs {
             Message message = new Message(Clients.CallerState.username, messageText);
             HubMessage hubMessage = new HubMessage(message);
             recentMessagesController.Post(hubMessage);
+            recentMessagesController.DeleteExcessMessagesFromDataBase();
             Clients.All.ServerSend(hubMessage);
         }
 

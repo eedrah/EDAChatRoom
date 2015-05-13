@@ -15,21 +15,21 @@ namespace EDAChatRoom.Controllers
 
         public void Post(HubMessage message)
         {
-            var recentMessagesTable = dbcontext.RecentMessages;
+            DbSet<DbRecentMessage> recentMessagesTable = dbcontext.RecentMessages;
             DbRecentMessage recentMessage = new DbRecentMessage(message);
             recentMessagesTable.Add(recentMessage);
             dbcontext.SaveChanges();
-            while(recentMessagesTable.Count() >= 30)
-            {
-                DeleteExcessMessagesFromDataBase(recentMessagesTable);
-            }
         }
 
-        private void DeleteExcessMessagesFromDataBase(DbSet<DbRecentMessage> recentMessagesTable )
+        public void DeleteExcessMessagesFromDataBase()
         {
-            DbRecentMessage messageToBeDeleted = recentMessagesTable.OrderBy(r => r.MessageTime).First();
-            dbcontext.RecentMessages.Remove(messageToBeDeleted);
-            dbcontext.SaveChanges();
+            DbSet<DbRecentMessage> recentMessagesTable = dbcontext.RecentMessages;
+            while (recentMessagesTable.Count() > 30)
+            {
+                DbRecentMessage messageToBeDeleted = recentMessagesTable.OrderBy(r => r.MessageTime).First();
+                dbcontext.RecentMessages.Remove(messageToBeDeleted);
+                dbcontext.SaveChanges();
+            }
         }
     }
 }
