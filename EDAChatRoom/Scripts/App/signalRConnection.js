@@ -33,3 +33,18 @@ function runChat() {
 };
 
 
+function ScrollToBottom(elm_id) {
+    var elm = document.getElementById(elm_id);
+    try {
+        elm.scrollTop(elm[0].scrollHeight);
+    }
+    catch (e) {
+        console.log('failure');
+        var tempElement = "<input id='temporaryFix'/>";
+        $('#messagesReceivedContainer').append(tempElement);
+        $('#temporaryFix').position = "relative";
+        $('#temporaryFix').bottom = "0px";
+        $('#temporaryFix').focus();
+        $('#temporaryFix').remove();
+    }
+}
