@@ -48,7 +48,7 @@ namespace EDAChatRoom.Controllers
 
         public JsonResult Get()
         {
-            return Json(dbcontext.RecentMessages, JsonRequestBehavior.DenyGet);
+            return Json(dbcontext.RecentMessages, JsonRequestBehavior.AllowGet);
         } 
     }
 }
