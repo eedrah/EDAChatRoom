@@ -14,7 +14,6 @@ function runChat() {
 
     Notification.requestPermission();
     GetRecentMessages();
-    $('#messageBox').focus();
 
     chatroom.client.serverSend = function (hubMessage) {
         var payload = hubMessage.Payload;
