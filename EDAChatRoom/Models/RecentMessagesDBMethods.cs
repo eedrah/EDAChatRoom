@@ -9,13 +9,7 @@ namespace EDAChatRoom.Models
 {
     public class RecentMessagesDBMethods
     {
-        private context _context;
-
-        public context DbContext
-        {
-            get { return _context; }
-            set { _context = value; }
-        }
+        public context DbContext = new context();
 
         public void Post(HubMessage message)
         {

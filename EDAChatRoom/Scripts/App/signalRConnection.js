@@ -1,5 +1,5 @@
 ﻿//pass recent messages with initial connection object.
-//post method now method of recentmessagemodel.
+//post method now method of recentmessagemodel
 //render user who goes on line in recent messages.
 
 var username;
@@ -13,7 +13,6 @@ function runChat() {
     chatroom.state.username = prompt('Enter a groovy alias');
 
     Notification.requestPermission();
-    GetRecentMessages();
 
     chatroom.client.serverSend = function (hubMessage) {
         var payload = hubMessage.Payload;
