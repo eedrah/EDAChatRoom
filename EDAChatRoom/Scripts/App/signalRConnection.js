@@ -7,7 +7,7 @@ function runChat() {
     var chatroom = $.connection.chatroom;
     chatroom.state.username = prompt('Enter a groovy alias');
     Notification.requestPermission();
-
+    GetRecentMessages();
     chatroom.client.serverSend = function (hubMessage) {
         var payload = hubMessage.Payload;
         if (hubMessage.HubMessageType === "Message") {
