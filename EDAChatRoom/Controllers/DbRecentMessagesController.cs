@@ -43,5 +43,10 @@ namespace EDAChatRoom.Controllers
                 }
             }
         }
+
+        public IQueryable<DbRecentMessage> Get()
+        {
+            return dbcontext.RecentMessages;
+        } 
     }
 }
