@@ -1,6 +1,7 @@
 ﻿//pass recent messages with initial connection object.
 //post method now method of recentmessagemodel
 //render user who goes on line in recent messages.
+//render database only when user initially logs in.
 
 var username;
 
