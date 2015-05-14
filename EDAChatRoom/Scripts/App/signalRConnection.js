@@ -20,8 +20,11 @@ function runChat() {
         if (hubMessage.HubMessageType === "Message") {
             controller.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
         }
-        if (hubMessage.HubMessageType === "InitialConnectionContainingRecentMessages") {
-            console.log(hubMessage.Payload);
+        else if (hubMessage.HubMessageType === "InitialConnectionContainingRecentMessages") {
+            for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
+                var currentMessage = hubMessage.Payload.RecentMessages[i];
+                controller.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime)
+            }
         }
         else {
             console.log(hubMessage);
