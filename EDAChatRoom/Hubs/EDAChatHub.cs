@@ -32,7 +32,6 @@ namespace EDAChatRoom.Hubs {
             Disconnection disconnection = new Disconnection(_connectedUsers[Context.ConnectionId]);
             HubMessage hubMessage = new HubMessage(disconnection);
             Clients.All.ServerSend(hubMessage);
-
             _connectedUsers.Remove(Context.ConnectionId);
             return base.OnDisconnected(stopCalled);
         }
@@ -47,6 +46,13 @@ namespace EDAChatRoom.Hubs {
             Connection connection = new Connection(Clients.CallerState.username);
             HubMessage newConnectionHubMessage = new HubMessage(connection);
             Clients.All.ServerSend(newConnectionHubMessage);
+        }
+
+        public void SendRecentMessagesOnFirstLogIn()
+        {
+                InitialConnectionContainingRecentMessages iccrm = new InitialConnectionContainingRecentMessages();
+                HubMessage a = new HubMessage(iccrm);
+                Clients.Caller.ServerSend(a);
         }
     }
 }

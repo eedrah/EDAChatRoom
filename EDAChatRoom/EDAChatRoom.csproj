@@ -168,6 +168,7 @@
     <Compile Include="Models\Disconnection.cs" />
     <Compile Include="Hubs\EDAChatHub.cs" />
     <Compile Include="Models\IClient.cs" />
+    <Compile Include="Models\InitialConnectionContainingRecentMessages.cs" />
     <Compile Include="Models\InitialConnection.cs" />
     <Compile Include="Models\HubMessage.cs" />
     <Compile Include="Models\ISendable.cs" />
