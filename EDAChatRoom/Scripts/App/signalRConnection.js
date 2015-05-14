@@ -21,7 +21,7 @@ function runChat() {
             controller.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
         }
         if (hubMessage.HubMessageType === "InitialConnectionContainingRecentMessages") {
-            alert(hubMessage.Payload);
+            console.log(hubMessage.Payload);
         }
         else {
             console.log(hubMessage);
