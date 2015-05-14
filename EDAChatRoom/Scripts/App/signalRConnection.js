@@ -20,7 +20,7 @@ function runChat() {
         if (hubMessage.HubMessageType === "Message") {
             controller.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
         }
-        else if (hubMessage.HubMessageType === "InitialConnectionContainingRecentMessages") {
+        else if (hubMessage.HubMessageType === "InitialConnection") {
             for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
                 var currentMessage = hubMessage.Payload.RecentMessages[i];
                 controller.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime)
@@ -44,7 +44,6 @@ function runChat() {
 
     $.connection.hub.start().done(function () {
         chatroom.server.clientSetUsername();
-        chatroom.server.sendRecentMessagesOnFirstLogIn();
     });
 };
 

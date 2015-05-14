@@ -47,12 +47,5 @@ namespace EDAChatRoom.Hubs {
             HubMessage newConnectionHubMessage = new HubMessage(connection);
             Clients.All.ServerSend(newConnectionHubMessage);
         }
-
-        public void SendRecentMessagesOnFirstLogIn()
-        {
-                InitialConnectionContainingRecentMessages iccrm = new InitialConnectionContainingRecentMessages();
-                HubMessage a = new HubMessage(iccrm);
-                Clients.Caller.ServerSend(a);
-        }
     }
 }
