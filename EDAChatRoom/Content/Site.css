@@ -23,9 +23,27 @@ textarea {
     max-width: 280px;
 }
 
+li {
+    list-style: none;
+}
+
 #messagesReceivedContainer {
     width: 50%;
-    height: 500px;
+    height: 400px;
     border: 1px solid black;
     overflow: auto;
+    position: relative;
+    margin-top: 20px;
+}
+
+#connectedUsers {
+    top: 150px;
+    right: 250px;
+    float: right;
+    width: 100px;
+    max-width: 100px;
+    height: 200px;
+    max-height: 200px;
+    border: 1px solid black;
+    position: absolute;
 }
