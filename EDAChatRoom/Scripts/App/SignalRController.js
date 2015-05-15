@@ -17,5 +17,5 @@ SRController.prototype.SendMessage = function(chatroom) {
 
 SRController.prototype.RenderNewConnection = function(hubMessage) {
     var connectedUser = this.Model.CreateNewConnectedUser(hubMessage);
-    console.log(connectedUser);
+    this.View.CreateMessageAnnouncingNewConnectedUser(connectedUser);
 }
