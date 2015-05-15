@@ -15,7 +15,7 @@ SRController.prototype.SendMessage = function(chatroom) {
     this.View.ClearEnterMessageBox();
 }
 
-SRController.prototype.RenderNewConnectedUser(newConnectedUserName)
+SRController.prototype.RenderNewConnection = function(hubMessage)
 {
-    console.log(newConnectedUserName);
+    console.log(hubMessage);
 }
