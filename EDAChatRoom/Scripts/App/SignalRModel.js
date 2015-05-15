@@ -29,3 +29,8 @@ SRModel.prototype.ClosePopUpNotification = function(popup)
         popup.close();
     }, 4000);
 }
+
+SRModel.prototype.CreateNewConnectedUser = function(hubMessage)
+{
+    return new ConnectedUser(hubMessage);
+}
