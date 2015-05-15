@@ -27,7 +27,7 @@ function runChat() {
             }
         }
         else if (hubMessage.HubMessageType === "Connection") {
-            alert(hubMessage);
+            console.log(hubMessage.Payload);
         }
         else {
             console.log(hubMessage);
