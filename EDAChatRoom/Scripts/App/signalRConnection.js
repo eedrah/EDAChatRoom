@@ -21,10 +21,12 @@ function runChat() {
             controller.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
         }
         else if (hubMessage.HubMessageType === "InitialConnection") {
+            console.log(hubMessage);
             for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
                 var currentMessage = hubMessage.Payload.RecentMessages[i];
-                controller.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime)
+                controller.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime);
             }
+            controller.UpdateConnectedUsersList(hubMessage.Payload.Usernames);
         }
         else if (hubMessage.HubMessageType === "Connection") {
             controller.RenderNewConnection(hubMessage);
