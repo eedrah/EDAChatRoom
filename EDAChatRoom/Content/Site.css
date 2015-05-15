@@ -40,8 +40,8 @@ li {
     top: 150px;
     right: 250px;
     float: right;
-    width: 100px;
-    max-width: 100px;
+    width: 20%;
+    max-width: 20%;
     height: 200px;
     max-height: 200px;
     border: 1px solid black;
