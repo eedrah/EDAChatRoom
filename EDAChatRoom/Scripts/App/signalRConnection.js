@@ -26,6 +26,9 @@ function runChat() {
                 controller.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime)
             }
         }
+        else if (hubMessage.HubMessageType === "Connection") {
+            alert(hubMessage);
+        }
         else {
             console.log(hubMessage);
         }
