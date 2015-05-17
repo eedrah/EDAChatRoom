@@ -39,5 +39,6 @@ SRController.prototype.UpdateConnectedUsersList = function (connectedUsersList) 
 }
 
 SRController.prototype.RemoveDisconnectedUser = function(hubMessage) {
-    this.Model.FindDisconnectedUserInList(hubMessage.Payload.Username);
+    this.Model.RemoveDisconnectedUser(hubMessage.Payload.Username);
+    this.View.ShowOnlineUsers(this.Model.OnlineUsers);
 }

@@ -47,21 +47,17 @@ SRModel.prototype.CreateNewConnectedUser = function(hubMessage)
     return connectedUser;
 }
 
-SRModel.prototype.FindDisconnectedUserInList = function(disconnectedUser) {
-    var connectedUsers = $('#listOfConnectedUsers li');
-    connectedUsers.each(function (index, li) {
-        var user = $(li);
-        if (user.context.innerText === disconnectedUser) {
-            connectedUsers.eq(index).remove();
-        }
-    });
-}
-
 //-------------------------------------------------------------
 
 SRModel.prototype.AddToOnlineUsersList = function (userName) {
     this.OnlineUsers.push(userName);
 }
 
-SRModel.prototype.RemoveDisconnectedUser = function() {
+SRModel.prototype.RemoveDisconnectedUser = function () {
+    for (var i = 0; i < this.OnlineUsers.length; i++) {
+        if (username === this.OnlineUsers[i]) {
+            var toDelete = this.OnlineUsers[i];
+            this.OnlineUsers.pop(toDelete);
+        }
+    }
 }
