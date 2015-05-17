@@ -1,9 +1,4 @@
-﻿//pass recent messages with initial connection object.
-//post method now method of recentmessagemodel
-//render user who goes on line in recent messages.
-//render database only when user initially logs in.
-
-var username;
+﻿var username;
 
 $(runChat);
 
@@ -60,6 +55,5 @@ function runChat() {
 
 
 function ScrollToBottomOfReceivedMessages() {
-    //need to add condition maybe only if out of page?
     $("#messagesReceivedContainer").prop({ scrollTop: $("#messagesReceivedContainer").prop("scrollHeight") });
 }

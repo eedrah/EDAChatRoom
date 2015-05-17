@@ -18,12 +18,9 @@ SRView.prototype.CreateMessageAnnouncingNewConnectedUser = function(connectedUse
     $('#messagesReceived').append($li);
 }
 
-//------------------------------------------------------
-
 SRView.prototype.ShowOnlineUsers = function(listOfUsers) {
     this.ClearResetOnlineUsersList();
     for (var i = 0; i < listOfUsers.length; i++) {
-        console.log(listOfUsers[i]);
         $li = $('<li>').text(listOfUsers[i]);
         $('#listOfConnectedUsers').append($li);
     }
