@@ -18,12 +18,14 @@ SRController.prototype.SendMessage = function(chatroom) {
 SRController.prototype.RenderNewConnection = function(hubMessage) {
     var connectedUser = this.Model.CreateNewConnectedUser(hubMessage);
     this.View.CreateMessageAnnouncingNewConnectedUser(connectedUser);
+    if (connectedUser.UserName !== username) {
+        this.View.AppendUsersToConnectedUsersList(connectedUser.UserName);
+    }
 }
 
 SRController.prototype.UpdateConnectedUsersList = function(connectedUsersList) {
     for (var i = 0; i < connectedUsersList.length; i++) {
         var currentUser = connectedUsersList[i];
-        console.log(currentUser);
         this.View.AppendUsersToConnectedUsersList(currentUser);
     }
 }

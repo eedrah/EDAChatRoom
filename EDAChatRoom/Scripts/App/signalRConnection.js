@@ -12,7 +12,7 @@ function runChat() {
     var chatroom = $.connection.chatroom;
 
     chatroom.state.username = prompt('Enter a groovy alias');
-
+    username = chatroom.state.username;
     Notification.requestPermission();
 
     chatroom.client.serverSend = function (hubMessage) {
@@ -21,7 +21,6 @@ function runChat() {
             controller.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
         }
         else if (hubMessage.HubMessageType === "InitialConnection") {
-            console.log(hubMessage);
             for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
                 var currentMessage = hubMessage.Payload.RecentMessages[i];
                 controller.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime);
