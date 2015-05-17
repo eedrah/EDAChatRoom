@@ -18,20 +18,24 @@ SRController.prototype.SendMessage = function(chatroom) {
 SRController.prototype.RenderNewConnection = function(hubMessage) {
     var connectedUser = this.Model.CreateNewConnectedUser(hubMessage);
     this.View.CreateMessageAnnouncingNewConnectedUser(connectedUser);
-    if (connectedUser.UserName !== username && document["hidden"]) {
-        this.View.AppendUsersToConnectedUsersList(connectedUser.UserName);
-        this.Model.CreateConnectionPopUpNotification(connectedUser.UserName);
-    }
-    else if (connectedUser.UserName !== username) {
-        this.View.AppendUsersToConnectedUsersList(connectedUser.UserName);
-    }
+    //if (connectedUser.UserName !== username && document["hidden"]) {
+    //    this.View.AppendUsersToConnectedUsersList(connectedUser.UserName);
+    //    this.Model.CreateConnectionPopUpNotification(connectedUser.UserName);
+    //}
+    //else if (connectedUser.UserName !== username) {
+    //    this.View.AppendUsersToConnectedUsersList(connectedUser.UserName);
+    //}
 }
 
-SRController.prototype.UpdateConnectedUsersList = function(connectedUsersList) {
+SRController.prototype.UpdateConnectedUsersList = function (connectedUsersList) {
     for (var i = 0; i < connectedUsersList.length; i++) {
-        var currentUser = connectedUsersList[i];
-        this.View.AppendUsersToConnectedUsersList(currentUser);
+        if (connectedUsersList[i] !== username) {
+            this.Model.AddToOnlineUsersList(connectedUsersList[i]);
+        }
+        //var currentUser = connectedUsersList[i];
+        //this.View.AppendUsersToConnectedUsersList(currentUser);
     }
+    this.View.ShowOnlineUsers(this.Model.OnlineUsers);
 }
 
 SRController.prototype.RemoveDisconnectedUser = function(hubMessage) {

@@ -20,6 +20,7 @@ function runChat() {
         if (hubMessage.HubMessageType === "Message") {
             controller.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
         }
+
         else if (hubMessage.HubMessageType === "InitialConnection") {
             for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
                 var currentMessage = hubMessage.Payload.RecentMessages[i];
@@ -27,12 +28,15 @@ function runChat() {
             }
             controller.UpdateConnectedUsersList(hubMessage.Payload.Usernames);
         }
+
         else if (hubMessage.HubMessageType === "Connection") {
             controller.RenderNewConnection(hubMessage);
         }
+
         else if (hubMessage.HubMessageType === "Disconnection") {
             controller.RemoveDisconnectedUser(hubMessage);
         }
+
         else {
             console.log(hubMessage);
         }

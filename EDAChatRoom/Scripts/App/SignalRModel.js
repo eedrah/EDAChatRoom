@@ -1,5 +1,6 @@
 ﻿function SRModel() {
     this.View = new SRView();
+    this.OnlineUsers = [];
 }
 
 SRModel.prototype.BindMessageToLiElement = function(username, messageContent, currentTime) {
@@ -40,7 +41,10 @@ SRModel.prototype.ClosePopUpNotification = function(popup)
 
 SRModel.prototype.CreateNewConnectedUser = function(hubMessage)
 {
-    return new ConnectedUser(hubMessage);
+    var connectedUser = new ConnectedUser(hubMessage);
+    this.AddToOnlineUsersList(connectedUser.UserName);
+    this.View.ShowOnlineUsers(this.OnlineUsers);
+    return connectedUser;
 }
 
 SRModel.prototype.FindDisconnectedUserInList = function(disconnectedUser) {
@@ -51,4 +55,13 @@ SRModel.prototype.FindDisconnectedUserInList = function(disconnectedUser) {
             connectedUsers.eq(index).remove();
         }
     });
+}
+
+//-------------------------------------------------------------
+
+SRModel.prototype.AddToOnlineUsersList = function (userName) {
+    this.OnlineUsers.push(userName);
+}
+
+SRModel.prototype.RemoveDisconnectedUser = function() {
 }
