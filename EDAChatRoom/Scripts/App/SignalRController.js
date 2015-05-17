@@ -33,3 +33,7 @@ SRController.prototype.UpdateConnectedUsersList = function(connectedUsersList) {
         this.View.AppendUsersToConnectedUsersList(currentUser);
     }
 }
+
+SRController.prototype.RemoveDisconnectedUser = function(hubMessage) {
+    this.Model.FindDisconnectedUserInList(hubMessage.Payload.Username);
+}

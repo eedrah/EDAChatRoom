@@ -30,6 +30,9 @@ function runChat() {
         else if (hubMessage.HubMessageType === "Connection") {
             controller.RenderNewConnection(hubMessage);
         }
+        else if (hubMessage.HubMessageType === "Disconnection") {
+            controller.RemoveDisconnectedUser(hubMessage);
+        }
         else {
             console.log(hubMessage);
         }

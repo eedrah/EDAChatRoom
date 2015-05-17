@@ -43,3 +43,12 @@ SRModel.prototype.CreateNewConnectedUser = function(hubMessage)
     return new ConnectedUser(hubMessage);
 }
 
+SRModel.prototype.FindDisconnectedUserInList = function(disconnectedUser) {
+    var connectedUsers = $('#listOfConnectedUsers li');
+    connectedUsers.each(function (index, li) {
+        var user = $(li);
+        if (user.context.innerText === disconnectedUser) {
+            connectedUsers.eq(index).remove();
+        }
+    });
+}
