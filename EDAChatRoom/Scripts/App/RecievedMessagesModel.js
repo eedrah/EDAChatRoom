@@ -8,6 +8,22 @@ RMModel.prototype.BindMessageToLiElement = function (username, messageContent, c
     this.rmView.RenderMessageToPage($li);
 }
 
+RMModel.prototype.CreateNewConnectedUser = function (hubMessage) {
+    var connectedUser = new ConnectedUser(hubMessage);
+    this.AddToOnlineUsersList(connectedUser.UserName);
+    this.rmView.ShowOnlineUsers(this.OnlineUsers);
+    return connectedUser;
+}
+
+RMModel.prototype.AddToOnlineUsersList = function (userName) {
+    this.OnlineUsers.push(userName);
+}
+
+
+
+
+// Notifications
+
 RMModel.prototype.CreateMessagePopUpNotification = function (username, message) {
     $('#messageAlertSound').get(0).play();
     var popup = new Notification('You have a message from ' + username, {

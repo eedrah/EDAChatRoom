@@ -9,3 +9,17 @@ RMController.prototype.RenderMessage = function (username, messageContent, curre
         this.rmModel.CreateMessagePopUpNotification(username, messageContent);
     }
 }
+
+RMController.prototype.RenderNewConnection = function (hubMessage) {
+    var connectedUser = this.rmModel.CreateNewConnectedUser(hubMessage);
+    this.rmView.CreateMessageAnnouncingNewConnectedUser(connectedUser);
+}
+
+RMController.prototype.UpdateConnectedUsersList = function (connectedUsersList) {
+    for (var i = 0; i < connectedUsersList.length; i++) {
+        if (connectedUsersList[i] !== username) {
+            this.rmModel.AddToOnlineUsersList(connectedUsersList[i]);
+        }
+    }
+    this.rmView.ShowOnlineUsers(this.rmModel.OnlineUsers);
+}

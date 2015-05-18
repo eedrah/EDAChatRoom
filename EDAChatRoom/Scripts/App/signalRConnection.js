@@ -21,13 +21,13 @@ function runChat() {
         else if (hubMessage.HubMessageType === "InitialConnection") {
             for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
                 var currentMessage = hubMessage.Payload.RecentMessages[i];
-                srController.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime);
+                rmController.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime);
             }
-            srController.UpdateConnectedUsersList(payload.Usernames);
+            rmController.UpdateConnectedUsersList(payload.Usernames);
         }
 
         else if (hubMessage.HubMessageType === "Connection") {
-            srController.RenderNewConnection(hubMessage);
+            rmController.RenderNewConnection(hubMessage);
         }
 
         else if (hubMessage.HubMessageType === "Disconnection") {
