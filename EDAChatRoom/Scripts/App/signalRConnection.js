@@ -31,7 +31,9 @@ function runChat() {
         else if (hubMessage.HubMessageType === "Disconnection") {
             controller.RemoveDisconnectedUser(hubMessage);
         }
-
+        else if (hubMessage.HubMessageType === "ImageMessage") {
+            alert(hubMessage.HubMessageType.Payload);
+        }
         else {
             console.log(hubMessage);
         }

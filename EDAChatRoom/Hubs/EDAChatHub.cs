@@ -48,8 +48,9 @@ namespace EDAChatRoom.Hubs {
             Clients.All.ServerSend(newConnectionHubMessage);
         }
 
-        public void BroadCastImageMessage(ImageMessage im)
+        public void BroadcastImageMessage(ImageMessage im)
         {
+            //Add Clients.State.Connectionid
             HubMessage newImageHubMessage = new HubMessage(im);
             Clients.All.ServerSend(newImageHubMessage);
         }
