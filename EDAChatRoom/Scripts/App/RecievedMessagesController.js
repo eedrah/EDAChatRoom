@@ -12,6 +12,9 @@ RMController.prototype.RenderMessage = function (username, messageContent, curre
 
 RMController.prototype.RenderNewConnection = function (hubMessage) {
     var connectedUser = this.rmModel.CreateNewConnectedUser(hubMessage);
+    if (document["hidden"]) {
+        this.rmModel.CreateConnectionPopUpNotification(connectedUser.UserName);
+    }
     this.rmView.CreateMessageAnnouncingNewConnectedUser(connectedUser);
 }
 

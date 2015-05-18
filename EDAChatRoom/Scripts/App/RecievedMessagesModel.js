@@ -39,6 +39,14 @@ RMModel.prototype.CreateMessagePopUpNotification = function (username, message) 
     this.ClosePopUpNotification(popup);
 }
 
+RMModel.prototype.CreateConnectionPopUpNotification = function (username) {
+    $('#messageAlertSound').get(0).play();
+    var popup = new Notification(username + ' is now online', {
+        icon: 'https://pbs.twimg.com/profile_images/378800000701114379/c2d4e7d706aec1b1207c40874c0d420d_400x400.png',
+    });
+    this.ClosePopUpNotification(popup);
+}
+
 RMModel.prototype.ClosePopUpNotification = function (popup) {
     setTimeout(function () {
         popup.close();
