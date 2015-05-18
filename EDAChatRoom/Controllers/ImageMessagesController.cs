@@ -16,7 +16,7 @@ namespace EDAChatRoom.Controllers
         public void Post(string userName, string imagebase64)
         {
             ImageMessage im = new ImageMessage(userName, imagebase64);
-
+            chatRoom.BroadcastImageMessage(im);
         }
     }
 }
