@@ -13,7 +13,7 @@ namespace EDAChatRoom.Controllers
     {
         private EDAChatHub chatRoom = new EDAChatHub();
 
-        public void PostImage(string userName, string imagebase64)
+        public void Post(string userName, string imagebase64)
         {
             ImageMessage im = new ImageMessage(userName, imagebase64);
 
