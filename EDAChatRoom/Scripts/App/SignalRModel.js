@@ -16,7 +16,7 @@ SRModel.prototype.SendMessageToServer = function(chatroom) {
 }
 
 SRModel.prototype.SendBase64ImageToServer = function (chatroom, username, base64) {
-    chatroom.server.sendBase64ToServer(username, base64);
+    chatroom.server.sendBase64(username, base64);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
