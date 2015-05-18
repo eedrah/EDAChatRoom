@@ -4,7 +4,7 @@
 }
 
 RMModel.prototype.BindMessageToLiElement = function (username, messageContent, currentTime) {
-    var $li = $('<li>').text(currentTime + " From " + username + ": " + messageContent);
+    var $li = $("<li>").text(currentTime + " From " + username + ": " + messageContent);
     this.rmView.RenderMessageToPage($li);
 }
 
@@ -31,8 +31,8 @@ RMModel.prototype.RemoveDisconnectedUser = function () {
 // Notifications
 
 RMModel.prototype.CreateMessagePopUpNotification = function (username, message) {
-    $('#messageAlertSound').get(0).play();
-    var popup = new Notification('You have a message from ' + username, {
+    $("#messageAlertSound").get(0).play();
+    var popup = new Notification("You have a message from " + username, {
         icon: 'https://pbs.twimg.com/profile_images/378800000701114379/c2d4e7d706aec1b1207c40874c0d420d_400x400.png',
         body: message
     });
@@ -40,8 +40,8 @@ RMModel.prototype.CreateMessagePopUpNotification = function (username, message) 
 }
 
 RMModel.prototype.CreateConnectionPopUpNotification = function (username) {
-    $('#messageAlertSound').get(0).play();
-    var popup = new Notification(username + ' is now online', {
+    $("#messageAlertSound").get(0).play();
+    var popup = new Notification(username + " is now online", {
         icon: 'https://pbs.twimg.com/profile_images/378800000701114379/c2d4e7d706aec1b1207c40874c0d420d_400x400.png',
     });
     this.ClosePopUpNotification(popup);

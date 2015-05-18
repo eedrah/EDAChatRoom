@@ -8,7 +8,7 @@ function runChat() {
 
     var chatroom = $.connection.chatroom;
 
-    chatroom.state.username = prompt('Enter a groovy alias');
+    chatroom.state.username = prompt("Enter a groovy alias");
     username = chatroom.state.username;
     Notification.requestPermission();
 
@@ -43,7 +43,7 @@ function runChat() {
         }
     }      
 
-    $('#sendMessageButton').click(function() {
+    $("#sendMessageButton").click(function() {
         srController.SendMessage(chatroom);
     });
 
@@ -51,7 +51,7 @@ function runChat() {
         chatroom.server.clientSetUsername();
     });
 
-    $('#image-upload').change(function(files) {
+    $("#image-upload").change(function(files) {
         var file = this.files[0];
         srController.UploadedImageToBase64(chatroom, username, file);
     });
