@@ -33,6 +33,7 @@ function runChat() {
         }
         else if (hubMessage.HubMessageType === "ImageMessage") {
             alert(hubMessage.HubMessageType.Payload);
+            //write code to send and convert, carry image to base 64, send ajax, then receive base 64, append it
         }
         else {
             console.log(hubMessage);
