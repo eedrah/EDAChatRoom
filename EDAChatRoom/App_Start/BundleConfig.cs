@@ -30,15 +30,20 @@ namespace EDAChatRoom {
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/App/signalRConnection.js",
-                "~/Scripts/App/SignalRController.js",
-                "~/Scripts/App/SignalRModel.js",
-                "~/Scripts/App/SignalRView.js",
-                "~/Scripts/App/AjaxDbRecentMessagesController.js",
                 "~/Scripts/App/ConnectedUserModel.js",
-                "~/Scripts/App/EventListeners.js",
-                "~/Scripts/App/RecievedMessagesController.js",
-                "~/Scripts/App/RecievedMessagesModel.js",
-                "~/Scripts/App/RecievedMessagesView.js"
+                "~/Scripts/App/EventListeners.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/recievedmessages").Include(
+                "~/Scripts/App/RecievedMessages/RecievedMessagesController.js",
+                "~/Scripts/App/RecievedMessages/RecievedMessagesModel.js",
+                "~/Scripts/App/RecievedMessages/RecievedMessagesView.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/sentmessages").Include(
+                "~/Scripts/App/SentMessages/SignalRController.js",
+                "~/Scripts/App/SentMessages/SignalRModel.js",
+                "~/Scripts/App/SentMessages/SignalRView.js"
                 ));
         }
     }

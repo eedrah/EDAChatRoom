@@ -187,13 +187,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\App\ConnectedUserModel.js" />
     <Content Include="Scripts\App\EventListeners.js" />
-    <Content Include="Scripts\App\RecievedMessagesController.js" />
-    <Content Include="Scripts\App\RecievedMessagesModel.js" />
-    <Content Include="Scripts\App\RecievedMessagesView.js" />
+    <Content Include="Scripts\App\RecievedMessages\RecievedMessagesController.js" />
+    <Content Include="Scripts\App\RecievedMessages\RecievedMessagesModel.js" />
+    <Content Include="Scripts\App\RecievedMessages\RecievedMessagesView.js" />
     <Content Include="Scripts\App\signalRConnection.js" />
-    <Content Include="Scripts\App\SignalRController.js" />
-    <Content Include="Scripts\App\SignalRModel.js" />
-    <Content Include="Scripts\App\SignalRView.js" />
+    <Content Include="Scripts\App\SentMessages\SignalRController.js" />
+    <Content Include="Scripts\App\SentMessages\SignalRModel.js" />
+    <Content Include="Scripts\App\SentMessages\SignalRView.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -225,7 +225,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\App\RecievedMessages\" />
     <Folder Include="Views\RecentMessages\" />
   </ItemGroup>
   <ItemGroup>
