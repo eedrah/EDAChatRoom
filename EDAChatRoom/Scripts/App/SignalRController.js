@@ -38,3 +38,7 @@ SRController.prototype.UploadedImageToBase64 = function(chatroom, username, file
 {
     this.Model.ReadImageFile(chatroom, username, file);
 }
+
+SRController.prototype.RenderImageMessageToChat = function(imageMessage) {
+    this.View.ShowImageInChatBox(imageMessage);
+}

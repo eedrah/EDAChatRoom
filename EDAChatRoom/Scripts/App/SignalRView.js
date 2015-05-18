@@ -29,3 +29,13 @@ SRView.prototype.ShowOnlineUsers = function(listOfUsers) {
 SRView.prototype.ClearResetOnlineUsersList = function() {
     $('#listOfConnectedUsers').empty();
 }
+
+SRView.prototype.ShowImageInChatBox = function(imageMessage) {
+    var image = new Image();
+    var preview = $('#messagesReceived');
+    var $li = $('<li>').text("image recieved from " + imageMessage.Username);
+
+    image.src = imageMessage.ImageBase64;
+    $li.append(image);
+    preview.append($li);
+}
