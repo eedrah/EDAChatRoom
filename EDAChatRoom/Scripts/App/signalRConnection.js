@@ -3,7 +3,9 @@
 $(runChat);
 
 function runChat() {
-    var controller = new SRController();
+    var srController = new SRController();
+    var rmController = new RMController();
+
     var chatroom = $.connection.chatroom;
 
     chatroom.state.username = prompt('Enter a groovy alias');
@@ -13,38 +15,36 @@ function runChat() {
     chatroom.client.serverSend = function (hubMessage) {
         var payload = hubMessage.Payload;
         if (hubMessage.HubMessageType === "Message") {
-            controller.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
+            rmController.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
         }
+
         else if (hubMessage.HubMessageType === "InitialConnection") {
             for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
                 var currentMessage = hubMessage.Payload.RecentMessages[i];
-                controller.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime);
+                srController.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime);
             }
-            controller.UpdateConnectedUsersList(hubMessage.Payload.Usernames);
+            srController.UpdateConnectedUsersList(payload.Usernames);
         }
+
         else if (hubMessage.HubMessageType === "Connection") {
-            controller.RenderNewConnection(hubMessage);
+            srController.RenderNewConnection(hubMessage);
         }
+
         else if (hubMessage.HubMessageType === "Disconnection") {
-            controller.RemoveDisconnectedUser(hubMessage);
+            srController.RemoveDisconnectedUser(hubMessage);
         }
+
         else if (hubMessage.HubMessageType === "ImageMessage") {
-            controller.RenderImageMessageToChat(hubMessage.Payload);
+            srController.RenderImageMessageToChat(payload);
         }
+
         else {
             console.log(hubMessage);
         }
     }      
 
-    $("#messageBox").keypress(function(e) {
-        if (e.which === 13) {
-            $('#sendMessageButton').trigger('click');
-            ScrollToBottomOfReceivedMessages();
-        }
-    });
-
     $('#sendMessageButton').click(function() {
-        controller.SendMessage(chatroom);
+        srController.SendMessage(chatroom);
     });
 
     $.connection.hub.start().done(function () {
@@ -53,7 +53,7 @@ function runChat() {
 
     $('#image-upload').change(function(files) {
         var file = this.files[0];
-        controller.UploadedImageToBase64(chatroom, username, file);
+        srController.UploadedImageToBase64(chatroom, username, file);
     });
 };
 

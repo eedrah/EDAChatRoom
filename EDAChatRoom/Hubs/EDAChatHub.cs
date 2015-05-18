@@ -48,13 +48,6 @@ namespace EDAChatRoom.Hubs {
             Clients.All.ServerSend(newConnectionHubMessage);
         }
 
-        public void BroadcastImageMessage(ImageMessage im)
-        {
-            //Add Clients.State.Connectionid
-            HubMessage newImageHubMessage = new HubMessage(im);
-            Clients.All.ServerSend(newImageHubMessage);
-        }
-
         public void SendBase64(string username, string base64)
         {
             ImageMessage imageMessage = new ImageMessage(username, base64);

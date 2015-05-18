@@ -34,7 +34,11 @@ namespace EDAChatRoom {
                 "~/Scripts/App/SignalRModel.js",
                 "~/Scripts/App/SignalRView.js",
                 "~/Scripts/App/AjaxDbRecentMessagesController.js",
-                "~/Scripts/App/ConnectedUserModel.js"
+                "~/Scripts/App/ConnectedUserModel.js",
+                "~/Scripts/App/EventListeners.js",
+                "~/Scripts/App/RecievedMessagesController.js",
+                "~/Scripts/App/RecievedMessagesModel.js",
+                "~/Scripts/App/RecievedMessagesView.js"
                 ));
         }
     }

@@ -162,17 +162,17 @@
       <DependentUpon>201505112257241_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\ISendableInheritance\Connection.cs" />
     <Compile Include="App_Data\context.cs" />
     <Compile Include="Models\DbRecentMessage.cs" />
-    <Compile Include="Models\Disconnection.cs" />
+    <Compile Include="Models\ISendableInheritance\Disconnection.cs" />
     <Compile Include="Hubs\EDAChatHub.cs" />
     <Compile Include="Models\IClient.cs" />
-    <Compile Include="Models\ImageMessage.cs" />
-    <Compile Include="Models\InitialConnection.cs" />
+    <Compile Include="Models\ISendableInheritance\ImageMessage.cs" />
+    <Compile Include="Models\ISendableInheritance\InitialConnection.cs" />
     <Compile Include="Models\HubMessage.cs" />
     <Compile Include="Models\ISendable.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\ISendableInheritance\Message.cs" />
     <Compile Include="Models\RecentMessagesDBMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -186,6 +186,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\App\ConnectedUserModel.js" />
+    <Content Include="Scripts\App\EventListeners.js" />
+    <Content Include="Scripts\App\RecievedMessagesController.js" />
+    <Content Include="Scripts\App\RecievedMessagesModel.js" />
+    <Content Include="Scripts\App\RecievedMessagesView.js" />
     <Content Include="Scripts\App\signalRConnection.js" />
     <Content Include="Scripts\App\SignalRController.js" />
     <Content Include="Scripts\App\SignalRModel.js" />
@@ -221,6 +225,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Scripts\App\RecievedMessages\" />
     <Folder Include="Views\RecentMessages\" />
   </ItemGroup>
   <ItemGroup>
