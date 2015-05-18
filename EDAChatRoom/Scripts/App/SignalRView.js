@@ -18,17 +18,17 @@ SRView.prototype.ClearEnterMessageBox = function()
 //    $('#messagesReceived').append($li);
 //}
 
-SRView.prototype.ShowOnlineUsers = function(listOfUsers) {
-    this.ResetOnlineUsersList();
-    for (var i = 0; i < listOfUsers.length; i++) {
-        $li = $('<li>').text(listOfUsers[i]);
-        $('#listOfConnectedUsers').append($li);
-    }
-}
+//SRView.prototype.ShowOnlineUsers = function(listOfUsers) {
+//    this.ResetOnlineUsersList();
+//    for (var i = 0; i < listOfUsers.length; i++) {
+//        $li = $('<li>').text(listOfUsers[i]);
+//        $('#listOfConnectedUsers').append($li);
+//    }
+//}
 
-SRView.prototype.ResetOnlineUsersList = function() {
-    $('#listOfConnectedUsers').empty();
-}
+//SRView.prototype.ResetOnlineUsersList = function() {
+//    $('#listOfConnectedUsers').empty();
+//}
 
 SRView.prototype.ShowImageInChatBox = function(imageMessage) {
     var image = new Image();

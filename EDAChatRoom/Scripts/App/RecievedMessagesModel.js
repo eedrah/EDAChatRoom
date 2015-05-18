@@ -19,8 +19,14 @@ RMModel.prototype.AddToOnlineUsersList = function (userName) {
     this.OnlineUsers.push(userName);
 }
 
-
-
+RMModel.prototype.RemoveDisconnectedUser = function () {
+    for (var i = 0; i < this.OnlineUsers.length; i++) {
+        if (username === this.OnlineUsers[i]) {
+            var toDelete = this.OnlineUsers[i];
+            this.OnlineUsers.pop(toDelete);
+        }
+    }
+}
 
 // Notifications
 

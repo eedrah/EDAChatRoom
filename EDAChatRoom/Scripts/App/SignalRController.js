@@ -23,10 +23,10 @@ SRController.prototype.SendMessage = function(chatroom) {
 //    this.View.ShowOnlineUsers(this.Model.OnlineUsers);
 //}
 
-SRController.prototype.RemoveDisconnectedUser = function(hubMessage) {
-    this.Model.RemoveDisconnectedUser(hubMessage.Payload.Username);
-    this.View.ShowOnlineUsers(this.Model.OnlineUsers);
-}
+//SRController.prototype.RemoveDisconnectedUser = function(hubMessage) {
+//    this.Model.RemoveDisconnectedUser(hubMessage.Payload.Username);
+//    this.View.ShowOnlineUsers(this.Model.OnlineUsers);
+//}
 
 SRController.prototype.UploadedImageToBase64 = function(chatroom, username, file)
 {

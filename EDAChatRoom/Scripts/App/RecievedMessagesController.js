@@ -23,3 +23,8 @@ RMController.prototype.UpdateConnectedUsersList = function (connectedUsersList) 
     }
     this.rmView.ShowOnlineUsers(this.rmModel.OnlineUsers);
 }
+
+RMController.prototype.RemoveDisconnectedUser = function (hubMessage) {
+    this.rmModel.RemoveDisconnectedUser(hubMessage.Payload.Username);
+    this.rmView.ShowOnlineUsers(this.rmModel.OnlineUsers);
+}

@@ -31,7 +31,7 @@ function runChat() {
         }
 
         else if (hubMessage.HubMessageType === "Disconnection") {
-            srController.RemoveDisconnectedUser(hubMessage);
+            rmController.RemoveDisconnectedUser(hubMessage);
         }
 
         else if (hubMessage.HubMessageType === "ImageMessage") {

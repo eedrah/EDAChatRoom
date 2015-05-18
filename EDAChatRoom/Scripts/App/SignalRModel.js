@@ -29,14 +29,14 @@ SRModel.prototype.SendBase64ImageToServer = function (chatroom, username, base64
 //    this.OnlineUsers.push(userName);
 //}
 
-SRModel.prototype.RemoveDisconnectedUser = function () {
-    for (var i = 0; i < this.OnlineUsers.length; i++) {
-        if (username === this.OnlineUsers[i]) {
-            var toDelete = this.OnlineUsers[i];
-            this.OnlineUsers.pop(toDelete);
-        }
-    }
-}
+//SRModel.prototype.RemoveDisconnectedUser = function () {
+//    for (var i = 0; i < this.OnlineUsers.length; i++) {
+//        if (username === this.OnlineUsers[i]) {
+//            var toDelete = this.OnlineUsers[i];
+//            this.OnlineUsers.pop(toDelete);
+//        }
+//    }
+//}
 
 //-----------------------------------------------------------------------------------------------------------------------------
 //Image file reading to base 64
