@@ -54,5 +54,12 @@ namespace EDAChatRoom.Hubs {
             HubMessage newImageHubMessage = new HubMessage(im);
             Clients.All.ServerSend(newImageHubMessage);
         }
+
+        public void SendBase64ToServer(string username, string base64)
+        {
+            ImageMessage imageMessage = new ImageMessage(username, base64);
+            HubMessage imageHubMessage = new HubMessage(imageMessage);
+            Clients.All.ServerSend(imageHubMessage);
+        }
     }
 }

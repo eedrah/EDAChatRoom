@@ -32,7 +32,7 @@ function runChat() {
             controller.RemoveDisconnectedUser(hubMessage);
         }
         else if (hubMessage.HubMessageType === "ImageMessage") {
-            alert(hubMessage.HubMessageType.Payload);
+            alert(hubMessage.Payload);
             //write code to send and convert, carry image to base 64, send ajax, then receive base 64, append it
         }
         else {
@@ -53,6 +53,11 @@ function runChat() {
 
     $.connection.hub.start().done(function () {
         chatroom.server.clientSetUsername();
+    });
+
+    $('#image-upload').change(function(files) {
+        var file = this.files[0];
+        controller.UploadedImageToBase64(chatroom, username, file);
     });
 };
 
