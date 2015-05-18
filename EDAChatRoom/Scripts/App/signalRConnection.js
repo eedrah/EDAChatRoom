@@ -35,7 +35,7 @@ function runChat() {
         }
 
         else if (hubMessage.HubMessageType === "ImageMessage") {
-            srController.RenderImageMessageToChat(payload);
+            rmController.RenderImageMessageToChat(payload);
         }
 
         else {

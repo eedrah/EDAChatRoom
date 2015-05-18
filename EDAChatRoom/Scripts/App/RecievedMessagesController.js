@@ -31,3 +31,7 @@ RMController.prototype.RemoveDisconnectedUser = function (hubMessage) {
     this.rmModel.RemoveDisconnectedUser(hubMessage.Payload.Username);
     this.rmView.ShowOnlineUsers(this.rmModel.OnlineUsers);
 }
+
+RMController.prototype.RenderImageMessageToChat = function(imageMessage) {
+    this.rmView.ShowImageInChatBox(imageMessage);
+}
