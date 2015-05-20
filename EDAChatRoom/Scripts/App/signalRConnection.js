@@ -64,7 +64,7 @@ function runChat() {
             audio: true
         }, function (localMediaStream) {
             var videostreamsrc = window.URL.createObjectURL(localMediaStream);
-            console.log(videostreamsrc);
+            srController.SendVideoStreamBlob(chatroom, username, videostreamsrc);
         }, function(errorCallback) {
             alert(errorCallback);
         });
