@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web;
 using EDAChatRoom.Controllers;
 using EDAChatRoom.Models;
+using EDAChatRoom.Models.ISendableInheritance;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 
