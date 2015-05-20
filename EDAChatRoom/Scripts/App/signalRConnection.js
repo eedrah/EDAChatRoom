@@ -72,7 +72,7 @@ function runChat() {
             var videostreamsrc = window.URL.createObjectURL(localMediaStream);
             srController.SendVideoStreamBlob(chatroom, username, videostreamsrc);
         }, function(errorCallback) {
-            alert(errorCallback);
+            alert("Rejectedddddd! " +errorCallback.name);
         });
     });
 };
