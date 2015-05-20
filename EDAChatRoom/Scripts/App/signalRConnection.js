@@ -1,4 +1,6 @@
 ﻿var username;
+navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 $(runChat);
 
@@ -55,8 +57,19 @@ function runChat() {
         var file = this.files[0];
         srController.UploadedImageToBase64(chatroom, username, file);
     });
-};
 
+    $("#start-video").click(function() {
+        navigator.webkitGetUserMedia({
+            video: true,
+            audio: true
+        }, function (localMediaStream) {
+            var videostreamsrc = window.URL.createObjectURL(localMediaStream);
+            console.log(videostreamsrc);
+        }, function(errorCallback) {
+            alert(errorCallback);
+        });
+    });
+};
 
 function ScrollToBottomOfReceivedMessages() {
     $("#messagesReceivedContainer").prop({ scrollTop: $("#messagesReceivedContainer").prop("scrollHeight") });
