@@ -1,48 +1,82 @@
 ﻿var username;
+navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 $(runChat);
 
 function runChat() {
-    var controller = new SRController();
+    var srController = new SRController();
+    var rmController = new RMController();
+
     var chatroom = $.connection.chatroom;
-    chatroom.state.username = prompt('Enter a groovy alias');
+
+    chatroom.state.username = prompt("Enter a groovy alias");
+    username = chatroom.state.username;
     Notification.requestPermission();
 
     chatroom.client.serverSend = function (hubMessage) {
-        if (hubMessage.HubMessageType === "Message") {
-            controller.RenderMessage(hubMessage.Payload.Username, hubMessage.Payload.MessageText, hubMessage.MessageTime);
-        } else {
+        var payload = hubMessage.Payload;
+        var messagetype = hubMessage.HubMessageType;
+        if (messagetype === "Message") {
+            rmController.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
+        }
+
+        else if (messagetype === "InitialConnection") {
+            for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
+                var currentMessage = hubMessage.Payload.RecentMessages[i];
+                rmController.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime);
+            }
+            rmController.UpdateConnectedUsersList(payload.Usernames);
+        }
+
+        else if (messagetype === "Connection") {
+            rmController.RenderNewConnection(hubMessage);
+        }
+
+        else if (messagetype === "Disconnection") {
+            rmController.RemoveDisconnectedUser(hubMessage);
+        }
+
+        else if (messagetype === "ImageMessage") {
+            rmController.RenderImageMessageToChat(payload);
+        }
+
+        else if (messagetype) {
+            var stream = payload.VideoBlob;
+            rmController.RenderVideoStream(stream);
+        }
+
+        else {
             console.log(hubMessage);
         }
-    }
+    }      
 
-        ////need to add condition to check if user is currently on the window or not
-        //if (document["hidden"]) {
-        //    createPopUpNotification(username, message);
-        //}
-
-    $("#messageBox").keypress(function(e) {
-        if (e.which === 13) {
-            $('#sendMessageButton').trigger('click');
-        }
-    });
-
-    $('#sendMessageButton').click(function() {
-        controller.SendMessage(chatroom);
+    $("#sendMessageButton").click(function() {
+        srController.SendMessage(chatroom);
     });
 
     $.connection.hub.start().done(function () {
         chatroom.server.clientSetUsername();
     });
+
+    $("#image-upload").change(function(files) {
+        var file = this.files[0];
+        srController.UploadedImageToBase64(chatroom, username, file);
+    });
+
+    $("#start-video").click(function() {
+        navigator.webkitGetUserMedia({
+            video: true,
+            audio: true
+        }, function (localMediaStream) {
+            var videostreamsrc = window.URL.createObjectURL(localMediaStream);
+            srController.SendVideoStreamBlob(chatroom, username, videostreamsrc);
+        }, function(errorCallback) {
+            alert(errorCallback);
+        });
+    });
 };
 
-function createPopUpNotification(username, message) {
-    $('#messageAlertSound').get(0).play();
-    var popup = new Notification('You have a message from ' + username, {
-        icon: 'https://pbs.twimg.com/profile_images/378800000701114379/c2d4e7d706aec1b1207c40874c0d420d_400x400.png',
-        body: message
-    });
-    setTimeout(function () {
-        popup.close();
-    }, 5000);
+function ScrollToBottomOfReceivedMessages() {
+    $("#messagesReceivedContainer").prop({ scrollTop: $("#messagesReceivedContainer").prop("scrollHeight") });
 }
