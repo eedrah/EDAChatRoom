@@ -54,5 +54,12 @@ namespace EDAChatRoom.Hubs {
             HubMessage imageHubMessage = new HubMessage(imageMessage);
             Clients.All.ServerSend(imageHubMessage);
         }
+
+        public void SendVideoBlob(string username, string blob)
+        {
+            VideoStream vs = new VideoStream(username, blob);
+            HubMessage videoStreamHubMessage = new HubMessage(vs);
+            Clients.All.ServerSend(videoStreamHubMessage);
+        }
     }
 }
