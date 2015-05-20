@@ -173,6 +173,7 @@
     <Compile Include="Models\HubMessage.cs" />
     <Compile Include="Models\ISendable.cs" />
     <Compile Include="Models\ISendableInheritance\Message.cs" />
+    <Compile Include="Models\ISendableInheritance\VideoStream.cs" />
     <Compile Include="Models\RecentMessagesDBMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

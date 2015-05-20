@@ -16,11 +16,12 @@ function runChat() {
 
     chatroom.client.serverSend = function (hubMessage) {
         var payload = hubMessage.Payload;
-        if (hubMessage.HubMessageType === "Message") {
+        var messagetype = hubMessage.HubMessageType;
+        if (messagetype === "Message") {
             rmController.RenderMessage(payload.Username, payload.MessageText, hubMessage.MessageTime);
         }
 
-        else if (hubMessage.HubMessageType === "InitialConnection") {
+        else if (messagetype === "InitialConnection") {
             for (var i = 0; i < hubMessage.Payload.RecentMessages.length; i++) {
                 var currentMessage = hubMessage.Payload.RecentMessages[i];
                 rmController.RenderMessage(currentMessage.Username, currentMessage.MessageText, currentMessage.MessageTime);
@@ -28,16 +29,21 @@ function runChat() {
             rmController.UpdateConnectedUsersList(payload.Usernames);
         }
 
-        else if (hubMessage.HubMessageType === "Connection") {
+        else if (messagetype === "Connection") {
             rmController.RenderNewConnection(hubMessage);
         }
 
-        else if (hubMessage.HubMessageType === "Disconnection") {
+        else if (messagetype === "Disconnection") {
             rmController.RemoveDisconnectedUser(hubMessage);
         }
 
-        else if (hubMessage.HubMessageType === "ImageMessage") {
+        else if (messagetype === "ImageMessage") {
             rmController.RenderImageMessageToChat(payload);
+        }
+
+        else if (messagetype) {
+            var stream = payload.VideoBlob;
+            rmController.RenderVideoStream(stream);
         }
 
         else {

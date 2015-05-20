@@ -35,3 +35,7 @@ RMController.prototype.RemoveDisconnectedUser = function (hubMessage) {
 RMController.prototype.RenderImageMessageToChat = function(imageMessage) {
     this.rmView.ShowImageInChatBox(imageMessage);
 }
+
+RMController.prototype.RenderVideoStream = function(stream) {
+    this.rmView.DisplayVideoStreamOnPage(stream);
+}

@@ -33,3 +33,8 @@ RMView.prototype.ShowImageInChatBox = function (imageMessage) {
     $li.append(image);
     messages.append($li);
 }
+
+RMView.prototype.DisplayVideoStreamOnPage = function(stream) {
+    var video = $('#video')[0];
+    video.src = stream;
+}
