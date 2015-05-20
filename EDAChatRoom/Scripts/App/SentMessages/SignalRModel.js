@@ -15,7 +15,7 @@ SRModel.prototype.SendBase64ImageToServer = function (chatroom, username, base64
 }
 
 SRModel.prototype.SendBlobToServer = function(chatroom, username, blob) {
-    
+    chatroom.server.SendVideoBlob(username, blob);
 }
 //-----------------------------------------------------------------------------------------------------------------------------
 //Image file reading to base 64
