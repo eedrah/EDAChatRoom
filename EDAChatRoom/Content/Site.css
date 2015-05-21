@@ -27,6 +27,28 @@ li {
     list-style: none;
 }
 
+#messagesReceived ul {
+    padding: 0;
+    margin: 0;
+}
+
+#messagesReceived li {
+	position: relative;
+    width: 95%;
+	height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+	background-color: #fff;
+	border: 1px solid #666;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 1px 1px 2px #888;
+	-moz-box-shadow: 1px 1px 2px #888;
+	box-shadow: 1px 1px 2px #888;
+    margin: 10px;
+}
+
 #messagesReceivedContainer {
     width: 50%;
     height: 400px;
@@ -37,13 +59,18 @@ li {
 }
 
 #connectedUsers {
-    top: 150px;
-    right: 250px;
-    float: right;
-    width: 20%;
-    max-width: 20%;
-    height: 200px;
-    max-height: 200px;
     border: 1px solid black;
-    position: absolute;
+    width: 20%;
+}
+#messageSendContainer {
+    border: 1px solid black;
+    margin: 1em;
+    width: 30%;
+    text-align: center;
+}
+
+input {
+    position: relative;
+    width: auto;
+    margin: 0 auto;
 }

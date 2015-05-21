@@ -10,28 +10,26 @@
     @Scripts.Render("~/bundles/recievedmessages")
 }
 <audio id="messageAlertSound">
-    <source src="./Content/Assets/MessageSound.mp3" type="audio/mpeg"/>
+    <source src="./Content/Assets/MessageSound.mp3" type="audio/mpeg" />
 </audio>
 
-<div id="messagesReceivedContainer">
+<section id="messagesReceivedContainer">
     <ul id="messagesReceived"></ul>
+</section>
+
+<div id="messageSendContainer">
+    <input id="messageBox" type="text" />
+    <input id="sendMessageButton" class="btn" type="button" value="Send" />
+    <input id="image-upload" type="file" accept="image/*" />
 </div>
 
 <div id="connectedUsers">
     <h4>Connected Users List</h4>
-    <ul id="listOfConnectedUsers">
-
-    </ul>
-</div>
-
-<div id="messageSendContainer">
-    <input id="messageBox" type="text"/>
-    <input id="sendMessageButton" class="btn" type="button" value="Send"/>
-    <input id="image-upload" type="file" accept="image/*"/>
+    <ul id="listOfConnectedUsers"></ul>
 </div>
 
 <div id="video-call-start-div">
-    <input id="start-video" type="button" value="start video call"/>
+    <input id="start-video" type="button" value="start video call" />
 </div>
 
 <video id="video" autoplay style="border: 1px solid rgb(14, 168, 234); width: 50%;"></video>

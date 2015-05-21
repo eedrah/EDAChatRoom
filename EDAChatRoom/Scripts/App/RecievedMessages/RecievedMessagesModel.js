@@ -3,8 +3,13 @@
     this.OnlineUsers = [];
 }
 
-RMModel.prototype.BindMessageToLiElement = function (username, messageContent, currentTime) {
-    var $li = $("<li>").text(currentTime + " From " + username + ": " + messageContent);
+RMModel.prototype.BindMessageToLiElement = function (sender, messageContent, currentTime) {
+    var $li = $("<li>").text(currentTime + " From " + sender + ": " + messageContent);
+    if (sender === username) {
+        $li.prop("id", "self");
+    } else {
+        $li.prop("id", sender);
+    }
     this.rmView.RenderMessageToPage($li);
 }
 
