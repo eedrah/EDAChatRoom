@@ -35,12 +35,12 @@ RMView.prototype.ShowImageInChatBox = function (imageMessage) {
 }
 
 RMView.prototype.DisplayVideoStreamOnPage = function(stream) {
-    var video = $('#video')[0];
-    video.src = stream;
-    //var canvas = $('#canvas')[0];
-    //var ctx = canvas.getContext('2d');
+    //var video = $('#video')[0];
+    //video.src = stream;
+    var canvas = $('#canvas')[0];
+    var ctx = canvas.getContext('2d');
 
-    //var image = new Image();
-    //image.src = stream;
-    //ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    var image = new Image();
+    image.src = stream;
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 }
