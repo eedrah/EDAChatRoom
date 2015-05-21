@@ -70,10 +70,10 @@ function runChat() {
             audio: true
         }, function (localMediaStream) {
             var videostreamsrc = window.URL.createObjectURL(localMediaStream);
-            srController.SendVideoStreamBlob(chatroom, username, videostreamsrc);
+            //srController.SendVideoStreamBlob(chatroom, username, videostreamsrc);
             var $vid = $('#video')[0];
             $vid.src = videostreamsrc;
-            //drawcanvas(chatroom);
+            drawcanvas(chatroom);
         }, function (errorCallback) {
             alert("Rejectedddddd! " + errorCallback.name);
         });
