@@ -15,7 +15,7 @@ RMView.prototype.CreateMessageAnnouncingNewConnectedUser = function (connectedUs
 RMView.prototype.ShowOnlineUsers = function (listOfUsers) {
     this.ResetOnlineUsersList();
     for (var i = 0; i < listOfUsers.length; i++) {
-        $li = $("<li>").text(listOfUsers[i]);
+        var $li = $("<li>").text(listOfUsers[i]);
         $("#listOfConnectedUsers").append($li);
     }
 }

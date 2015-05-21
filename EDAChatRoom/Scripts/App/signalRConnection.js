@@ -49,9 +49,9 @@ function runChat() {
         else {
             console.log(hubMessage);
         }
-    }      
+    }
 
-    $("#sendMessageButton").click(function() {
+    $("#sendMessageButton").click(function () {
         srController.SendMessage(chatroom);
     });
 
@@ -59,24 +59,37 @@ function runChat() {
         chatroom.server.clientSetUsername();
     });
 
-    $("#image-upload").change(function(files) {
+    $("#image-upload").change(function (files) {
         var file = this.files[0];
         srController.UploadedImageToBase64(chatroom, username, file);
     });
 
-    $("#start-video").click(function() {
+    $("#start-video").click(function () {
         navigator.webkitGetUserMedia({
             video: true,
             audio: true
         }, function (localMediaStream) {
             var videostreamsrc = window.URL.createObjectURL(localMediaStream);
-            srController.SendVideoStreamBlob(chatroom, username, videostreamsrc);
-        }, function(errorCallback) {
-            alert("Rejectedddddd! " +errorCallback.name);
+            //srController.SendVideoStreamBlob(chatroom, username, videostreamsrc);
+            var $vid = $('#video')[0];
+            $vid.src = videostreamsrc;
+            drawcanvas();
+        }, function (errorCallback) {
+            alert("Rejectedddddd! " + errorCallback.name);
         });
     });
 };
 
 function ScrollToBottomOfReceivedMessages() {
     $("#messagesReceivedContainer").prop({ scrollTop: $("#messagesReceivedContainer").prop("scrollHeight") });
+}
+
+function drawcanvas() {
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var video = $('#video')[0];
+
+    setInterval(function () {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    }, 100);
 }

@@ -74,3 +74,7 @@ input {
     width: auto;
     margin: 0 auto;
 }
+
+#canvas {
+    object-fit: cover;
+}

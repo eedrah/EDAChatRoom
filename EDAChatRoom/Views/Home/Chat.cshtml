@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/recievedmessages")
 }
 <audio id="messageAlertSound">
-    <source src="./Content/Assets/MessageSound.mp3" type="audio/mpeg" />
+    <source src="./../Content/Assets/MessageSound.mp3" type="audio/mpeg" />
 </audio>
 
 <section id="messagesReceivedContainer">
@@ -32,4 +32,6 @@
     <input id="start-video" type="button" value="start video call" />
 </div>
 
-<video id="video" autoplay style="border: 1px solid rgb(14, 168, 234); width: 50%;"></video>
+<video id="video" autoplay="autoplay" style="border: 1px solid rgb(14, 168, 234); width: 50%;"></video>
+
+<canvas id="canvas" style="border: 1px solid rgb(14, 168, 234); width: 50%;"> </canvas>
