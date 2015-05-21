@@ -60,7 +60,7 @@ namespace EDAChatRoom.Hubs {
         {
             VideoStream vs = new VideoStream(username, blob);
             HubMessage videoStreamHubMessage = new HubMessage(vs);
-            Clients.All.ServerSend(videoStreamHubMessage);
+            Clients.Others.ServerSend(videoStreamHubMessage);
         }
     }
 }

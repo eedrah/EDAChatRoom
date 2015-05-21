@@ -73,7 +73,7 @@ function runChat() {
             //srController.SendVideoStreamBlob(chatroom, username, videostreamsrc);
             var $vid = $('#video')[0];
             $vid.src = videostreamsrc;
-            drawcanvas();
+            drawcanvas(chatroom);
         }, function (errorCallback) {
             alert("Rejectedddddd! " + errorCallback.name);
         });
@@ -84,12 +84,16 @@ function ScrollToBottomOfReceivedMessages() {
     $("#messagesReceivedContainer").prop({ scrollTop: $("#messagesReceivedContainer").prop("scrollHeight") });
 }
 
-function drawcanvas() {
+function drawcanvas(chatroom) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
     var video = $('#video')[0];
 
     setInterval(function () {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    }, 100);
+    }, 500);
+    setInterval(function() {
+        var vidstream = canvas.toDataURL("image/png", 1);
+        chatroom.server.sendVideoBlob(username, vidstream);
+    }, 500);
 }
